@@ -65,8 +65,7 @@ namespace MineScan
             {
                 for (int cy = y - 1; cy <= y + 1; cy++)
                 {
-                    if (cx == x && cy == y) { continue; }
-                    ;
+                    if (cx == x && cy == y) { continue; };
                     if (cx >= 0 && cy >= 0 && cx < Size && cy < Size)
                     {
                         if (GridData[cx, cy].IsMine) { count++; }

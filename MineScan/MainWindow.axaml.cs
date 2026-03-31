@@ -1,3 +1,5 @@
+#pragma warning disable CS8622
+
 namespace MineScan
 {
     public partial class MainWindow : Window
@@ -6,6 +8,7 @@ namespace MineScan
         public static readonly FontFamily MinecraftFont = new FontFamily("avares://MineScan/Assets/Fonts/#Minecraftia");
 
         public Button[,] Cells;
+        private Grid MenuButtons;
         private Gridinfo gameField;
         bool minesPlaced = false;
         public int gridx, gridy;
@@ -16,8 +19,63 @@ namespace MineScan
             InitializeComponent();
             Width = Config.WindowWidth;
             Height = Config.WindowHeight;
+            StartMenu();
+        }
 
+        private void StartMenu()
+        {
+            Button PlayButton = new Button
+            {
+                Content = "Start Game",
+                FontSize = 24,
+                FontFamily = MinecraftFont,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Foreground = new SolidColorBrush(Colors.Green)
+            };
+            Button SettingsButton = new Button
+            {
+                Content = "Settings",
+                FontSize = 24,
+                FontFamily = MinecraftFont,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 100, 0, 0),
+                Foreground = new SolidColorBrush(Colors.DarkGray)
+            };
+            Button ExitButton = new Button
+            {
+                Content = "Exit",
+                FontSize = 24,
+                FontFamily = MinecraftFont,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 200, 0, 0),
+                Foreground = new SolidColorBrush(Colors.Red)
+            };
+            PlayButton.Click += StartGameBtn;
+            ExitButton.Click += ExitBtn;
+            SettingsButton.Click += SettingsBtn;
+            MenuButtons = new Grid { Children = { PlayButton, SettingsButton, ExitButton } };
+            this.Content = MenuButtons;
+
+        }
+        private void StartGameBtn(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            this.Content = null;
             CreateField();
+        }
+        private void SettingsBtn(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            Settings();
+        }
+        private void ExitBtn(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        public void Settings()
+        {
+
         }
 
         private void CreateField()
@@ -58,11 +116,6 @@ namespace MineScan
             this.Content = mineField;
         }
 
-        private void MainMenu()
-        {
-
-        }
-
         private void OpenCell(int x, int y)
         {
             if (x < 0 || y < 0 || y >= Config.GridSize || x >= Config.GridSize) return;
@@ -72,7 +125,16 @@ namespace MineScan
                 Cells[x, y].Content = "💣";
                 Cells[x, y].IsHitTestVisible = false;
                 Cells[x, y].Background = new SolidColorBrush(Colors.Red);
-                this.Content = null;
+                //this.Content = null;
+                Label label = new Label
+                {
+                    Content = "Game Over",
+                    FontSize = 48,
+                    FontFamily = MinecraftFont,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                this.Content = label;
                 return;
             }
 
