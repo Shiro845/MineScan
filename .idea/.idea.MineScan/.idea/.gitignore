@@ -2,6 +2,12 @@
 *.sln.iml
 *.dispatch
 
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+
 bin/
 obj/
 /TestResults/

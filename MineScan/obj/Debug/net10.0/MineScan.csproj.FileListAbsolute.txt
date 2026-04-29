@@ -72,3 +72,4 @@ C:\Users\Admin\RiderProjects\MineScan\MineScan\obj\Debug\net10.0\refint\MineScan
 C:\Users\Admin\RiderProjects\MineScan\MineScan\obj\Debug\net10.0\MineScan.pdb
 C:\Users\Admin\RiderProjects\MineScan\MineScan\obj\Debug\net10.0\MineScan.genruntimeconfig.cache
 C:\Users\Admin\RiderProjects\MineScan\MineScan\obj\Debug\net10.0\ref\MineScan.dll
+C:\Users\Admin\RiderProjects\MineScan\MineScan\obj\Debug\net10.0\MineScan.sourcelink.json

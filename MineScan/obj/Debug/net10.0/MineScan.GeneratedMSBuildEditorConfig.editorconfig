@@ -26,5 +26,8 @@ build_property.EnableCodeStyleSeverity =
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MainMenu.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

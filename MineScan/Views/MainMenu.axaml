@@ -1,0 +1,34 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MineScan.Views.MainMenu">
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Background" Value="#303050"/>
+            <Setter Property="Foreground" Value="GhostWhite"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+    </UserControl.Styles>
+                 <Grid Background="MediumPurple">
+                     <Viewbox Stretch="Uniform">
+                         <Grid Height="800" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
+                             <Grid RowDefinitions="*, *, *, *, *, *, *" Height="600" Width="450" VerticalAlignment="Center">
+                                 <TextBlock Grid.Row="0" Text="MineScan" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                 <Button Grid.Row="1" Content="Грати"/>
+                                 <Button Grid.Row="2" Content="Статистика"/>
+                                 <Button Grid.Row="3" Content="Скіни"/>
+                                 <Button Grid.Row="4" Content="Налаштування"/>
+                                 <Button Grid.Row="5" Content="Як грати?"/>
+                                 <Button Grid.Row="6" Content="Вихід"/>
+                             </Grid>
+                         </Grid>
+                     </Viewbox>
+                 </Grid>
+</UserControl>

@@ -4,6 +4,7 @@
     <option name="projectPerEditor">
       <map>
         <entry key="MineScan/App.axaml" value="MineScan/MineScan.csproj" />
+        <entry key="MineScan/Views/MainMenu.axaml" value="MineScan/MineScan.csproj" />
         <entry key="MineScan/Views/MainWindow.axaml" value="MineScan/MineScan.csproj" />
       </map>
     </option>

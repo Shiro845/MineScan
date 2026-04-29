@@ -1,6 +1,9 @@
-﻿namespace MineScan.ViewModels;
+﻿using Avalonia.Controls;
+using MineScan.Views;
+
+namespace MineScan.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    public UserControl CurrentPage { get; private set; } = new MainMenu();
 }
