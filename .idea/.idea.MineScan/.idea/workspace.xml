@@ -8,11 +8,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e957b7c7-82d8-439c-9767-d27de6084e36" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MineScan/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineScan/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/ViewModels/MainMenuViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/DificultySelectionUserControl.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/DificultySelectionUserControl.axaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/ExitGameUserControl.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/ExitGameUserControl.axaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/PlayingTutorialUserControl.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/PlayingTutorialUserControl.axaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/SettingsUserControl.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/SettingsUserControl.axaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/SkinsUserControl.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/SkinsUserControl.axaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/StatisticsUserControl.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MineScan/Views/MenuOptions/StatisticsUserControl.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineScan/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineScan/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineScan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineScan/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MineScan/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/ViewModels/MainWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MineScan/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/App.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MineScan/ViewModels/MainWindowViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MineScan/ViewModels/ViewModelBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/ViewModels/ViewModelBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MineScan/Views/MainMenu.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/Views/MainMenuUserControl.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MineScan/Views/MainMenu.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/Views/MainMenuUserControl.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MineScan/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/Views/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MineScan/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/Views/MainWindow.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MineScan/bin/Debug/net10.0/MineScan.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/bin/Debug/net10.0/MineScan.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MineScan/bin/Debug/net10.0/MineScan.exe" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/bin/Debug/net10.0/MineScan.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MineScan/bin/Debug/net10.0/MineScan.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/bin/Debug/net10.0/MineScan.pdb" afterDir="false" />
@@ -22,13 +39,14 @@
       <change beforePath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/MineScan.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/ref/MineScan.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/ref/MineScan.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/refint/MineScan.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/Debug/net10.0/refint/MineScan.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MineScan/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MineScan/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MineScan/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/MineScan/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +61,18 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/MineScan/Models/Cell.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/MineScan/Views/MainMenu.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/MineScan/Views/MainMenu.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/DificultySelectionUserControl.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/DificultySelectionUserControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/ExitGameUserControl.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/ExitGameUserControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/PlayingTutorialUserControl.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/PlayingTutorialUserControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/SettingsUserControl.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/SettingsUserControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/SkinsUserControl.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/SkinsUserControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/StatisticsUserControl.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MineScan/Views/MenuOptions/StatisticsUserControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -104,7 +132,11 @@
       <updated>1777399882447</updated>
       <workItem from="1777399883357" duration="1807000" />
       <workItem from="1777410313961" duration="1151000" />
-      <workItem from="1777476192658" duration="7518000" />
+      <workItem from="1777476192658" duration="7682000" />
+      <workItem from="1777488589178" duration="38000" />
+      <workItem from="1777673952833" duration="1110000" />
+      <workItem from="1777675287695" duration="637000" />
+      <workItem from="1778180953895" duration="3847000" />
     </task>
     <servers />
   </component>

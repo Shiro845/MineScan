@@ -26,8 +26,26 @@ build_property.EnableCodeStyleSeverity =
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MainMenu.axaml]
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MainMenuUserControl.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/DificultySelectionUserControl.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/ExitGameUserControl.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/PlayingTutorialUserControl.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/SettingsUserControl.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/SkinsUserControl.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/StatisticsUserControl.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

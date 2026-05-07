@@ -2,11 +2,11 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace MineScan.Views;
+namespace MineScan.Views.MenuOptions;
 
-public partial class MainMenu : UserControl
+public partial class SkinsUserControl : UserControl
 {
-    public MainMenu()
+    public SkinsUserControl()
     {
         InitializeComponent();
     }
