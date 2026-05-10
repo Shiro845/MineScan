@@ -26,13 +26,16 @@ build_property.EnableCodeStyleSeverity =
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/GameBoardUserControl.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MainMenuUserControl.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/DificultySelectionUserControl.axaml]
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/DifficultySelectionUserControl.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/ExitGameUserControl.axaml]

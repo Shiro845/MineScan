@@ -14,13 +14,13 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
     </UserControl.Styles>
                  <Grid Background="MediumPurple">
                      <Viewbox Stretch="Uniform">
                          <Grid Height="800" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
-                             <Grid RowDefinitions="*, *, *, *, *, *, *" Height="600" Width="450" VerticalAlignment="Center">
+                             <Grid RowDefinitions="*, *, *, *, *, *, *" Height="500" Width="375" VerticalAlignment="Center">
                                  <TextBlock Grid.Row="0" Text="MineScan" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                  <Button Grid.Row="1" Command="{Binding ChangePageCommand}" CommandParameter="Play" Content="Грати"/>
                                  <Button Grid.Row="2" Command="{Binding ChangePageCommand}" CommandParameter="Stats" Content="Статистика"/>

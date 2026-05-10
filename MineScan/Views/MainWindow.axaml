@@ -3,20 +3,55 @@
         xmlns:vm="using:MineScan.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:menuOptions="clr-namespace:MineScan.Views.MenuOptions"
+        xmlns:views="clr-namespace:MineScan.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MineScan.Views.MainWindow"
-        x:DataType="vm:MainMenuViewModel"
+        x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="MineScan">
+    
+        <Window.DataTemplates>
+            <DataTemplate DataType="{x:Type vm:MainMenuViewModel}">
+                <views:MainMenuUserControl />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:DifficultySelectionViewModel}">
+                <menuOptions:DifficultySelectionUserControl />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:StatisticsViewModel}">
+                <menuOptions:StatisticsUserControl />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:SkinsViewModel}">
+                <menuOptions:SkinsUserControl/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+                <menuOptions:SettingsUserControl/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:PlayingTutorialViewModel}">
+                <menuOptions:PlayingTutorialUserControl/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:ExitGameViewModel}">
+                <menuOptions:ExitGameUserControl/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:GameBoardViewModel}">
+                <views:GameBoardUserControl/>
+            </DataTemplate>
+        </Window.DataTemplates>
 
-    <Design.DataContext>
-        <vm:MainMenuViewModel/>
-    </Design.DataContext>
+        <Design.DataContext>
+            <vm:MainWindowViewModel/>
+        </Design.DataContext>
     
         <TransitioningContentControl Content="{Binding CurrentPage}">
             <TransitioningContentControl.PageTransition>
                 <CrossFade Duration="00:00:00.200"/>
             </TransitioningContentControl.PageTransition>
         </TransitioningContentControl>
-    
 </Window>

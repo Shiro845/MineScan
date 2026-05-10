@@ -4,13 +4,13 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace MineScan.ViewModels;
 
-public class MainMenuViewModel : ViewModelBase
+public class DifficultySelectionViewModel : ViewModelBase
 {
-    private readonly Action<string> _changePage;
-
-    public ICommand  ChangePageCommand { get; }
+    private Action<string> _changePage;
     
-    public MainMenuViewModel(Action<string> changePage)
+    public ICommand  ChangePageCommand { get; }
+
+    public DifficultySelectionViewModel(Action<string> changePage)
     {
         _changePage = changePage;
         ChangePageCommand = new RelayCommand<string>(pageName =>

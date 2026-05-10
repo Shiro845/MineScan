@@ -1,0 +1,64 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MineScan.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="vm:DifficultySelectionViewModel"
+             x:Class="MineScan.Views.MenuOptions.DifficultySelectionUserControl">
+    <UserControl.Styles>
+        <Style Selector="RadioButton.DifficultyBlock">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="Background" Value="#405060"/>
+            <Setter Property="GroupName" Value="Difficulty"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" Easing="CubicEaseOut"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        
+        <Style Selector="RadioButton:checked">
+            <Setter Property="Background" Value="DarkSeaGreen"/>
+        </Style>
+            
+        <Style Selector="RadioButton.DifficultyBlock:pointerover">
+            <Setter Property="RenderTransform" Value="scale(1.05)" />
+        </Style>
+    </UserControl.Styles>
+    <Grid Background="MediumPurple">
+                 <Viewbox Stretch="Uniform">
+                     <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
+                         <Grid Height="200" VerticalAlignment="Center" RowDefinitions="*, 4*, *">
+                             <TextBlock Grid.Row="0" Text="Оберіть рівень складності" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                             <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
+                                 <RadioButton Grid.Column="0" Classes="DifficultyBlock">
+                                     <Grid>
+                                         <TextBlock Text="easy"/>
+                                     </Grid>
+                                 </RadioButton>
+                                 <RadioButton Grid.Column="1" Classes="DifficultyBlock">
+                                     <Grid>
+                                         <TextBlock Text="medium"/>
+                                     </Grid>
+                                 </RadioButton>
+                                 <RadioButton Grid.Column="2" Classes="DifficultyBlock">
+                                     <Grid>
+                                         <TextBlock Text="hard"/>
+                                     </Grid>
+                                 </RadioButton>
+                             </Grid>
+                             <Grid Grid.Row="2" ColumnDefinitions="*, *">
+                                 <Button Grid.Column="0" Content="Назад" Background="PowderBlue" FontSize="15"
+                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                         HorizontalAlignment="Right" Width="120" Margin="2" Command="{Binding ChangePageCommand}" CommandParameter="MainMenu"/> 
+                                 <Button Grid.Column="1" Content="Почати гру" Background="PowderBlue" FontSize="15"
+                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                         HorizontalAlignment="Left" Width="120" Margin="2" Command="{Binding ChangePageCommand}" CommandParameter="GameBoard"/>
+                             </Grid>
+                         </Grid>
+                     </Grid>
+                 </Viewbox>
+             </Grid>
+</UserControl>
