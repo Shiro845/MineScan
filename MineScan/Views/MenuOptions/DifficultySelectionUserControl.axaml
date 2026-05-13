@@ -12,19 +12,37 @@
             <Setter Property="BorderThickness" Value="5"/>
             <Setter Property="Background" Value="#405060"/>
             <Setter Property="GroupName" Value="Difficulty"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Transitions">
                 <Transitions>
                     <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" Easing="CubicEaseOut"/>
                 </Transitions>
             </Setter>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
         </Style>
         
         <Style Selector="RadioButton:checked">
-            <Setter Property="Background" Value="DarkSeaGreen"/>
+            <Setter Property="Background" Value="Pink"/>
         </Style>
             
         <Style Selector="RadioButton.DifficultyBlock:pointerover">
             <Setter Property="RenderTransform" Value="scale(1.05)" />
+            <Setter Property="Background" Value="Red"/>
         </Style>
     </UserControl.Styles>
     <Grid Background="MediumPurple">
@@ -34,7 +52,7 @@
                              <TextBlock Grid.Row="0" Text="Оберіть рівень складності" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
                              <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
                                  <RadioButton Grid.Column="0" Classes="DifficultyBlock">
-                                     <Grid>
+                                     <Grid >
                                          <TextBlock Text="easy"/>
                                      </Grid>
                                  </RadioButton>

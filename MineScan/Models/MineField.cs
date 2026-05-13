@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MineScan.Models;
 
@@ -6,12 +8,24 @@ public class MineField
 {
     private Cell[,] _field;
 
-    public MineField(int width, int height, int minesCount)
+    public MineField(sbyte width, sbyte height, sbyte minesCount)
     {
         _field = new Cell[width, height];
         
+        FillingCells(width, height);   
         SpawnMines(minesCount);
         CalculateAllMinesAround();
+    }
+
+    public void FillingCells(int width, int height)
+    {
+        for (int i = 0; i < _field.GetLength(0); i++)
+        {
+            for (int k = 0; k < _field.GetLength(1); k++)
+            {
+                _field[i, k] = new Cell(){ IsFlagged = false, IsMine = false, IsOpen = false, MinesAround = 0, X = i, Y = k};
+            }
+        }
     }
 
     public void SpawnMines(int minesCount)
@@ -54,7 +68,7 @@ public class MineField
             for (int k = y-1; k <= y+1; k++)
             {
                 if (x == i && y == k) continue;
-                if (i > _field.GetLength(0) || k > _field.GetLength(1)) { continue; }
+                if (i >= _field.GetLength(0) || k >= _field.GetLength(1) || i < 0 || k < 0) { continue; }
                 
                 if (_field[i, k].IsMine)
                 {
@@ -63,5 +77,20 @@ public class MineField
             }
         }
         return minesCount;
+    }
+
+    public List<Cell> ToCellList()
+    {
+        var flatList = new List<Cell>();
+        foreach (var cell in _field)
+        {
+            flatList.Add(cell);
+        }
+        return flatList;
+    }
+    
+    public void OpenCell(int x, int y)
+    {
+        _field[x, y].IsOpen = true;
     }
 }
