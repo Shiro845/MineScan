@@ -3,6 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:MineScan.ViewModels"
+             xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+             xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="vm:GameBoardViewModel"
              x:Class="MineScan.Views.GameBoardUserControl">
             <UserControl.Styles>
@@ -12,6 +14,10 @@
                     <Setter Property="VerticalAlignment" Value="Stretch"/>
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Width" Value="30"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="CornerRadius" Value="0"/>
                 </Style>
                 <Style Selector="Button.Cell.Opened">
                     <Setter Property="Background" Value="White"/>
@@ -25,12 +31,13 @@
             </UserControl.Styles>
             <Grid Background="MediumPurple">
                  <Viewbox Stretch="Uniform">
-                     <Grid Width="300" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center" Background="IndianRed">
-                         <Grid  Height="300" Width="300" VerticalAlignment="Center" RowDefinitions="*, 4*, *">
-                            <ItemsControl Name="ItemsControl" Grid.Row="1" Background="HotPink" ItemsSource="{Binding Cells}" Width="200" Height="200">
+                     <Grid Width="300" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center" RowDefinitions="*, 4*, *">
+                         <Grid Grid.Row="1"  Height="300" Width="300" VerticalAlignment="Center">
+                            <Viewbox Width="200" Height="200">
+                                <ItemsControl Name="ItemsControl" Background="HotPink" ItemsSource="{Binding Cells}" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <UniformGrid Columns="8" Rows="8"/>
+                                        <UniformGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                                     </ItemsPanelTemplate> 
                                 </ItemsControl.ItemsPanel>
 
@@ -38,20 +45,40 @@
                                     <DataTemplate>
                                         <Button Command="{Binding #ItemsControl.((vm:GameBoardViewModel)DataContext).OpenCellCommand}"
                                                 CommandParameter="{Binding}"
-                                                Classes="Cell" HorizontalContentAlignment="Stretch"
+                                                Classes="Cell"
                                                 Classes.Opened="{Binding IsOpen}"
                                                 Classes.Mine="{Binding IsMine}"
                                                 Classes.Flagged="{Binding IsFlagged}">
+                                        <Interaction.Behaviors>
+                                            <EventTriggerBehavior EventName="RightTapped">
+                                                <InvokeCommandAction 
+                                                    Command="{Binding #ItemsControl.((vm:GameBoardViewModel)DataContext).FlagCellCommand}"
+                                                    CommandParameter="{Binding}" />
+                                            </EventTriggerBehavior>
+                                        </Interaction.Behaviors>
                                             <Viewbox Stretch="Uniform">
-                                                <TextBlock Name="TextBlock"
-                                                           Text="{Binding MinesAround}" 
-                                                           IsVisible="{Binding IsOpen}"
-                                                           Foreground="Black"/>
+                                                <Panel IsVisible="{Binding IsOpen}">
+                                                    <TextBlock Text="{Binding MinesAroundText}"
+                                                           Foreground="{Binding NumberColor}"/>
+                                                    <Image Source="/Assets/bomb.png"
+                                                       Stretch="Fill"
+                                                       IsVisible="{Binding IsMine}">
+                                                    </Image>
+                                                </Panel>
                                             </Viewbox>
                                         </Button> 
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
+                            </Viewbox>
+                         </Grid>
+                         <Grid Grid.Row="2" ColumnDefinitions="*, *">
+                             <Button Grid.Column="0" Content="Меню" Background="PowderBlue" FontSize="15"
+                                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Right" Width="100" Margin="2" Command="{Binding ChangePageCommand}" CommandParameter="MainMenu"/> 
+                             <Button Grid.Column="1" Content="Заново" Background="PowderBlue" FontSize="15"
+                                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Left" Width="100" Margin="2" Command="{Binding ChangePageCommand}" CommandParameter="GameBoard"/>
                          </Grid>
                      </Grid>
                  </Viewbox>

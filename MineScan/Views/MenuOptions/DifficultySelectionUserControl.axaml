@@ -51,23 +51,26 @@
                          <Grid Height="200" VerticalAlignment="Center" RowDefinitions="*, 4*, *">
                              <TextBlock Grid.Row="0" Text="Оберіть рівень складності" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
                              <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
-                                 <RadioButton Grid.Column="0" Classes="DifficultyBlock">
+                                 <RadioButton Grid.Column="0" Classes="DifficultyBlock"
+                                              IsChecked="{Binding IsEasyChecked}">
                                      <Grid >
                                          <TextBlock Text="easy"/>
                                      </Grid>
                                  </RadioButton>
-                                 <RadioButton Grid.Column="1" Classes="DifficultyBlock">
+                                 <RadioButton Grid.Column="1" Classes="DifficultyBlock"
+                                              IsChecked="{Binding IsMediumChecked}">
                                      <Grid>
                                          <TextBlock Text="medium"/>
                                      </Grid>
                                  </RadioButton>
-                                 <RadioButton Grid.Column="2" Classes="DifficultyBlock">
+                                 <RadioButton Grid.Column="2" Classes="DifficultyBlock"
+                                              IsChecked="{Binding IsHardChecked}">
                                      <Grid>
                                          <TextBlock Text="hard"/>
                                      </Grid>
                                  </RadioButton>
                              </Grid>
-                             <Grid Grid.Row="2" ColumnDefinitions="*, *">
+                             <Grid Grid.Row="2" ColumnDefinitions="*, *" Height="40">
                                  <Button Grid.Column="0" Content="Назад" Background="PowderBlue" FontSize="15"
                                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                          HorizontalAlignment="Right" Width="120" Margin="2" Command="{Binding ChangePageCommand}" CommandParameter="MainMenu"/> 

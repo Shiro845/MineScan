@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO.Compression;
 
 namespace MineScan.Models;
 
@@ -8,13 +9,13 @@ public class MineField
 {
     private Cell[,] _field;
 
-    public MineField(sbyte width, sbyte height, sbyte minesCount)
+    public bool IsMinesSpawned { get; private set; } = false;
+    
+    public MineField(sbyte width, sbyte height)
     {
         _field = new Cell[width, height];
         
-        FillingCells(width, height);   
-        SpawnMines(minesCount);
-        CalculateAllMinesAround();
+        FillingCells(width, height);
     }
 
     public void FillingCells(int width, int height)
@@ -28,7 +29,7 @@ public class MineField
         }
     }
 
-    public void SpawnMines(int minesCount)
+    public void SpawnMines(int minesCount, int firstX, int firstY)
     {
         Random random = new Random();
         for (int i = 1; i <= minesCount; i++)
@@ -36,16 +37,18 @@ public class MineField
             int x = random.Next(0, _field.GetLength(0));
             int y = random.Next(0, _field.GetLength(1));
 
-            if (_field[x, y].IsMine)
+            if (_field[x, y].IsMine || (x >= firstX-1 && x <= firstX+1 && y >= firstY-1 && y <= firstY+1 ))
             {
                 i--;
                 continue;
             }
             _field[x, y].IsMine = true;
         }
+        CalculateMinesAround();
+        IsMinesSpawned = true;
     }
 
-    private void CalculateAllMinesAround()
+    private void CalculateMinesAround()
     {
         for (int i = 0; i < _field.GetLength(0); i++)
         {
@@ -78,6 +81,27 @@ public class MineField
         }
         return minesCount;
     }
+    
+    public sbyte FlagsAroundCell(int x, int y)
+    {
+        sbyte flagsCount = 0;
+        Cell cell = _field[x, y];
+        
+        for (int i = x-1; i <= x+1; i++)
+        {
+            for (int k = y-1; k <= y+1; k++)
+            {
+                if (x == i && y == k) continue;
+                if (i >= _field.GetLength(0) || k >= _field.GetLength(1) || i < 0 || k < 0) { continue; }
+                
+                if (_field[i, k].IsFlagged)
+                {
+                    flagsCount++;
+                }
+            }
+        }
+        return flagsCount;
+    }
 
     public List<Cell> ToCellList()
     {
@@ -91,6 +115,48 @@ public class MineField
     
     public void OpenCell(int x, int y)
     {
+        if (x < 0 || x >= _field.GetLength(0) || y < 0 || y >= _field.GetLength(1)) return;
+        if (_field[x, y].IsOpen || _field[x, y].IsFlagged) return;
+        
         _field[x, y].IsOpen = true;
+        
+        if (_field[x, y].MinesAround == 0 && !_field[x, y].IsMine)
+        {
+            for (int i = x - 1; i <= x + 1; i++)
+            {
+                for (int k = y - 1; k <= y + 1; k++)
+                {
+                    if (i == x && k == y) continue;
+                    OpenCell(i, k);
+                }
+            }
+        }
+    }
+    public void ToggleFlag(int x, int y)
+    {
+        if (!_field[x, y].IsOpen)
+        {
+            _field[x, y].IsFlagged = !_field[x, y].IsFlagged;
+        }
+    }
+
+    public void Chording(int x, int y)
+    {
+        if (MinesAroundCell(x, y) == FlagsAroundCell(x, y))
+        {
+            for (int i = x-1; i <= x+1; i++)
+            {
+                for (int k = y-1; k <= y+1; k++)
+                {
+                    if (x == i && y == k) continue;
+                    if (i >= _field.GetLength(0) || k >= _field.GetLength(1) || i < 0 || k < 0) { continue; }
+
+                    if (!_field[i, k].IsFlagged)
+                    {
+                        OpenCell(i, k);
+                    }
+                }
+            }
+        }
     }
 }
