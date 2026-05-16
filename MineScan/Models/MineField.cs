@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO.Compression;
+using System.Runtime.CompilerServices;
 
 namespace MineScan.Models;
 
@@ -10,6 +11,11 @@ public class MineField
     private Cell[,] _field;
 
     public bool IsMinesSpawned { get; private set; } = false;
+    
+    
+    public bool IsExploded { private set; get; }
+    public bool IsWon { private set; get; }
+    public bool IsGameOver => IsExploded || IsWon;
     
     public MineField(sbyte width, sbyte height)
     {
@@ -115,6 +121,7 @@ public class MineField
     
     public void OpenCell(int x, int y)
     {
+        if (IsGameOver) return;
         if (x < 0 || x >= _field.GetLength(0) || y < 0 || y >= _field.GetLength(1)) return;
         if (_field[x, y].IsOpen || _field[x, y].IsFlagged) return;
         
@@ -130,6 +137,26 @@ public class MineField
                     OpenCell(i, k);
                 }
             }
+        }
+        
+        if (_field[x, y].IsMine && _field[x, y].IsOpen)
+        {
+            IsExploded = true;
+            return;
+        }
+        
+        int closedSafeCells = 0;
+        foreach (var cell in _field)
+        {
+            if (!cell.IsMine && !cell.IsOpen)
+            {
+                closedSafeCells++;
+            }
+        }
+        
+        if (closedSafeCells == 0)
+        {
+            IsWon = true;
         }
     }
     public void ToggleFlag(int x, int y)

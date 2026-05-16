@@ -2,7 +2,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="MineScan.Views.MenuOptions.StatisticsUserControl">
-    Welcome to Avalonia!
+             xmlns:vm="using:MineScan.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="vm:StatisticsViewModel"
+             x:Class="MineScan.Views.MenuOptions.StatisticsUserControl"
+             Background="MediumPurple">
+             <Viewbox Stretch="Uniform">
+                     <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
+                         <Grid VerticalAlignment="Center" RowDefinitions="150, 150, 150">
+                             <TextBlock Grid.Row="0" Text="Статистика" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" FontSize="20"/>
+                             <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
+                                 <Grid Grid.Column="0" Background="Lime" Margin="5" RowDefinitions="*, *, *, *">
+                                     <TextBlock Grid.Row="0" Text="Кількість ігор:"/>
+                                     <TextBlock Grid.Row="1" Text="{Binding Stats.EasyStats.GamesPlayed}"/>
+                                     <TextBlock Grid.Row="2" Text="Вінрейт:"/>
+                                     <TextBlock Grid.Row="3" Text="{Binding Stats.EasyStats.WinRate}"/>
+                                 </Grid>
+                                 <Grid Grid.Column="1" Background="Orange" Margin="5" RowDefinitions="*, *, *, *">
+                                     <TextBlock Grid.Row="0" Text="Кількість ігор:"/>
+                                     <TextBlock Grid.Row="1" Text="{Binding Stats.MediumStats.GamesPlayed}"/>
+                                     <TextBlock Grid.Row="2" Text="Вінрейт:"/>
+                                     <TextBlock Grid.Row="3" Text="{Binding Stats.MediumStats.WinRate}"/>
+                                 </Grid>
+                                 <Grid Grid.Column="2" Background="Red" Margin="5" RowDefinitions="*, *, *, *">
+                                     <TextBlock Grid.Row="0" Text="Кількість ігор:"/>
+                                     <TextBlock Grid.Row="1" Text="{Binding Stats.HardStats.GamesPlayed}"/>
+                                     <TextBlock Grid.Row="2" Text="Вінрейт:"/>
+                                     <TextBlock Grid.Row="3" Text="{Binding Stats.HardStats.WinRate}"/>
+                                 </Grid>
+                             </Grid>
+                             <Grid Grid.Row="2">
+                                 <Button Content="Назад" Background="PowderBlue" FontSize="15"
+                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                         HorizontalAlignment="Left" VerticalAlignment="Bottom"  Width="120" Margin="2" Command="{Binding GoBack}"/>
+                             </Grid>
+                         </Grid>
+                     </Grid>
+                 </Viewbox>
 </UserControl>

@@ -1,6 +1,21 @@
-﻿namespace MineScan.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-public static class SelectedDifficulty
+namespace MineScan.Models;
+
+public class SelectedDifficulty : ObservableObject
 {
-    public static GameDifficulty ActualDifficulty { get; set; } = GameDifficulty.Easy;
+    public static SelectedDifficulty Instance { get; } = new();
+    public GameDifficulty ActualDifficulty { get; set; } = GameDifficulty.Easy;
+
+    public Statistics EasyStats { get; } = new();
+    public Statistics MediumStats { get; } = new();
+    public Statistics HardStats { get; } = new();
+    
+    public Statistics GetCurrentStats() => ActualDifficulty switch
+    {
+        GameDifficulty.Easy => EasyStats,
+        GameDifficulty.Medium => MediumStats,
+        GameDifficulty.Hard => HardStats,
+        _ => EasyStats
+    };
 }

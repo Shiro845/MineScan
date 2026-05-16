@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using MineScan.Models;
@@ -10,12 +7,10 @@ namespace MineScan.ViewModels;
 
 public class GameBoardViewModel : ViewModelBase
 {
-    private readonly Action<string> _changePage;
+    public void GoBack() => NavigationService.Instance.NavigateTo<MainMenuViewModel>();
+    public void Restart() => NavigationService.Instance.NavigateTo<GameBoardViewModel>();
     
-    public ICommand ChangePageCommand { get; set; }
-
     public ICommand OpenCellCommand { get; set; }
-    
     public ICommand FlagCellCommand { get; set; }
     
     public MineField MineField { get; }
@@ -30,11 +25,33 @@ public class GameBoardViewModel : ViewModelBase
         }
     }
 
-    public GameBoardViewModel(Action<string> changePage)
+    public bool Win
     {
-        var difficulty = SelectedDifficulty.ActualDifficulty;
+        get;
+        set
+        {
+            field = value;
+            OnPropertyChanged(nameof(Win));
+        }
+    }
+    public bool Lose
+    {
+        get;
+        set
+        {
+            field = value;
+            OnPropertyChanged(nameof(Lose));
+        }
+    }
+
+    public GameBoardViewModel()
+    {
+        var difficulty = SelectedDifficulty.Instance.ActualDifficulty;
         sbyte width, height, mines;
 
+        Win = false;
+        Lose = false;
+        
         switch (difficulty)
         {
             case GameDifficulty.Easy:
@@ -69,6 +86,19 @@ public class GameBoardViewModel : ViewModelBase
                 if (cell.IsOpen) { MineField.Chording(cell.X, cell.Y); }
                 if (!MineField.IsMinesSpawned) { MineField.SpawnMines(mines, cell.X, cell.Y); }
                 MineField.OpenCell(cell.X, cell.Y);
+
+                if (MineField.IsExploded)
+                {
+                    SelectedDifficulty.Instance.GetCurrentStats().GamesPlayed++;
+                    Lose = true;
+                }
+
+                else if (MineField.IsWon)
+                {
+                    SelectedDifficulty.Instance.GetCurrentStats().GamesPlayed++;
+                    SelectedDifficulty.Instance.GetCurrentStats().GamesWon++;
+                    Win = true;
+                }
             }
         });
         FlagCellCommand = new RelayCommand<Cell>(cell =>
@@ -77,11 +107,6 @@ public class GameBoardViewModel : ViewModelBase
             {
                 MineField.ToggleFlag(cell.X, cell.Y);
             }
-        });
-        _changePage = changePage;
-        ChangePageCommand = new RelayCommand<string>(pageName =>
-        {
-            if (pageName != null) _changePage(pageName);
         });
     }
 }

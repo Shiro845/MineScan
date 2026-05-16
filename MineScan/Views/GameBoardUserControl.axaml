@@ -71,14 +71,34 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                             </Viewbox>
+                            <Viewbox Width="200" Height="200">
+                                <Grid Background="#c2606060" Height="200" Width="200"
+                                       IsVisible="{Binding Lose}">
+                                    <TextBlock Foreground="White"
+                                               Text="You Lose"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               FontSize="30"/>
+                                </Grid>
+                            </Viewbox>
+                            <Viewbox Width="200" Height="200">
+                                <Grid Background="#c2606060" Height="200" Width="200"
+                                      IsVisible="{Binding Win}">
+                                    <TextBlock Foreground="White"
+                                               Text="You Win"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               FontSize="30"/>
+                                </Grid>
+                            </Viewbox>
                          </Grid>
                          <Grid Grid.Row="2" ColumnDefinitions="*, *">
                              <Button Grid.Column="0" Content="Меню" Background="PowderBlue" FontSize="15"
                                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                     HorizontalAlignment="Right" Width="100" Margin="2" Command="{Binding ChangePageCommand}" CommandParameter="MainMenu"/> 
+                                     HorizontalAlignment="Right" Width="100" Margin="2" Command="{Binding GoBack}"/> 
                              <Button Grid.Column="1" Content="Заново" Background="PowderBlue" FontSize="15"
                                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                     HorizontalAlignment="Left" Width="100" Margin="2" Command="{Binding ChangePageCommand}" CommandParameter="GameBoard"/>
+                                     HorizontalAlignment="Left" Width="100" Margin="2" Command="{Binding Restart}"/>
                          </Grid>
                      </Grid>
                  </Viewbox>

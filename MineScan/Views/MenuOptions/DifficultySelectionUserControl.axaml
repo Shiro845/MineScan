@@ -53,7 +53,7 @@
                              <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
                                  <RadioButton Grid.Column="0" Classes="DifficultyBlock"
                                               IsChecked="{Binding IsEasyChecked}">
-                                     <Grid >
+                                     <Grid>
                                          <TextBlock Text="easy"/>
                                      </Grid>
                                  </RadioButton>
@@ -73,10 +73,10 @@
                              <Grid Grid.Row="2" ColumnDefinitions="*, *" Height="40">
                                  <Button Grid.Column="0" Content="Назад" Background="PowderBlue" FontSize="15"
                                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                         HorizontalAlignment="Right" Width="120" Margin="2" Command="{Binding ChangePageCommand}" CommandParameter="MainMenu"/> 
+                                         HorizontalAlignment="Right" Width="120" Margin="2" Command="{Binding GoBack}"/> 
                                  <Button Grid.Column="1" Content="Почати гру" Background="PowderBlue" FontSize="15"
                                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                         HorizontalAlignment="Left" Width="120" Margin="2" Command="{Binding ChangePageCommand}" CommandParameter="GameBoard"/>
+                                         HorizontalAlignment="Left" Width="120" Margin="2" Command="{Binding OpenGameBoard}"/>
                              </Grid>
                          </Grid>
                      </Grid>

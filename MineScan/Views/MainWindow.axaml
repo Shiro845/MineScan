@@ -43,13 +43,17 @@
             <DataTemplate DataType="{x:Type vm:GameBoardViewModel}">
                 <views:GameBoardUserControl/>
             </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:StatisticsViewModel}">
+                <menuOptions:StatisticsUserControl/>
+            </DataTemplate>
         </Window.DataTemplates>
 
         <Design.DataContext>
             <vm:MainWindowViewModel/>
         </Design.DataContext>
     
-        <TransitioningContentControl Content="{Binding CurrentPage}">
+        <TransitioningContentControl Content="{Binding Nav.CurrentPage}">
             <TransitioningContentControl.PageTransition>
                 <CrossFade Duration="00:00:00.200"/>
             </TransitioningContentControl.PageTransition>
