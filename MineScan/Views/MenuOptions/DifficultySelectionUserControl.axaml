@@ -45,7 +45,7 @@
             <Setter Property="Background" Value="Red"/>
         </Style>
     </UserControl.Styles>
-    <Grid Background="MediumPurple">
+    <Grid Background="{DynamicResource MainBackground}">
                  <Viewbox Stretch="Uniform">
                      <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
                          <Grid Height="200" VerticalAlignment="Center" RowDefinitions="*, 4*, *">

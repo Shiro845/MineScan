@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:menuOptions="clr-namespace:MineScan.Views.MenuOptions"
         xmlns:views="clr-namespace:MineScan.Views"
+        xmlns:vm1="clr-namespace:MineScan.ViewModels.MenuOptions"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MineScan.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
+        x:DataType="vm1:ThemesViewModel"
+        RequestedThemeVariant="{Binding CurrentTheme}"
+        Icon="/Assets/Images/favicon.ico"
         Title="MineScan">
     
         <Window.DataTemplates>
@@ -24,8 +26,8 @@
                 <menuOptions:StatisticsUserControl />
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:SkinsViewModel}">
-                <menuOptions:SkinsUserControl/>
+            <DataTemplate DataType="{x:Type vm1:ThemesViewModel}">
+                <menuOptions:ThemesUserControl/>
             </DataTemplate>
             
             <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
@@ -53,7 +55,7 @@
             <vm:MainWindowViewModel/>
         </Design.DataContext>
     
-        <TransitioningContentControl Content="{Binding Nav.CurrentPage}">
+        <TransitioningContentControl x:DataType="vm:MainWindowViewModel" Content="{Binding Nav.CurrentPage}">
             <TransitioningContentControl.PageTransition>
                 <CrossFade Duration="00:00:00.200"/>
             </TransitioningContentControl.PageTransition>

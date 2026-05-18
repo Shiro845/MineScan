@@ -17,14 +17,14 @@
             <Setter Property="FontSize" Value="20"/>
         </Style>
     </UserControl.Styles>
-                 <Grid Background="MediumPurple">
+                 <Grid Background="{DynamicResource MainBackground}">
                      <Viewbox Stretch="Uniform">
                          <Grid Height="800" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
                              <Grid RowDefinitions="*, *, *, *, *, *, *" Height="500" Width="375" VerticalAlignment="Center">
                                  <TextBlock Grid.Row="0" Text="MineScan" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                  <Button Grid.Row="1" Command="{Binding OpenPlay}" Content="Грати"/>
                                  <Button Grid.Row="2" Command="{Binding OpenStats}" Content="Статистика"/>
-                                 <Button Grid.Row="3" Command="{Binding OpenSkins}" Content="Скіни"/>
+                                 <Button Grid.Row="3" Command="{Binding OpenThemes}" Content="Теми"/>
                                  <Button Grid.Row="4" Command="{Binding OpenSettings}" Content="Налаштування"/>
                                  <Button Grid.Row="5" Command="{Binding OpenTutorial}" Content="Як грати?"/>
                                  <Button Grid.Row="6" Command="{Binding OpenExitGame}" Content="Вихід"/>

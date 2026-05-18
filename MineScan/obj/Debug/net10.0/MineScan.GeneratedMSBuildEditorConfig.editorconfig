@@ -31,6 +31,18 @@ build_property.EnableCodeStyleSeverity =
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Resources/Themes/DarkTheme.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Resources/Themes/LightTheme.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Resources/Themes/NeonTheme.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Resources/Themes/PinkTheme.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/GameBoardUserControl.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
@@ -52,8 +64,8 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/SettingsUserControl.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/SkinsUserControl.axaml]
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/StatisticsUserControl.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/StatisticsUserControl.axaml]
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/ThemesUserControl.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

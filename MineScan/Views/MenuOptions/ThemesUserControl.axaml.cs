@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace MineScan.Views.MenuOptions;
 
-public partial class SkinsUserControl : UserControl
+public partial class ThemesUserControl : UserControl
 {
-    public SkinsUserControl()
+    public ThemesUserControl()
     {
         InitializeComponent();
     }
