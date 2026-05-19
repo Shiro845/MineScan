@@ -54,4 +54,14 @@ public class Cell : ObservableObject
     }
     public int X { get; set; }
     public int Y { get; set; }
+    
+    public bool IsRadarScanning
+    {
+        get => field;
+        set
+        {
+            field = value;
+            OnPropertyChanged(nameof(IsRadarScanning));
+        }
+    }
 }

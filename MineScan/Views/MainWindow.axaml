@@ -38,7 +38,7 @@
                 <menuOptions:PlayingTutorialUserControl/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:ExitGameViewModel}">
+            <DataTemplate DataType="{x:Type vm1:ExitGameViewModel}">
                 <menuOptions:ExitGameUserControl/>
             </DataTemplate>
             

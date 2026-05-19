@@ -42,43 +42,45 @@
             
         <Style Selector="RadioButton.DifficultyBlock:pointerover">
             <Setter Property="RenderTransform" Value="scale(1.05)" />
-            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Background" Value="PaleVioletRed"/>
         </Style>
     </UserControl.Styles>
     <Grid Background="{DynamicResource MainBackground}">
                  <Viewbox Stretch="Uniform">
                      <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
-                         <Grid Height="200" VerticalAlignment="Center" RowDefinitions="*, 4*, *">
-                             <TextBlock Grid.Row="0" Text="Оберіть рівень складності" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-                             <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
-                                 <RadioButton Grid.Column="0" Classes="DifficultyBlock"
-                                              IsChecked="{Binding IsEasyChecked}">
-                                     <Grid>
-                                         <TextBlock Text="easy"/>
-                                     </Grid>
-                                 </RadioButton>
-                                 <RadioButton Grid.Column="1" Classes="DifficultyBlock"
-                                              IsChecked="{Binding IsMediumChecked}">
-                                     <Grid>
-                                         <TextBlock Text="medium"/>
-                                     </Grid>
-                                 </RadioButton>
-                                 <RadioButton Grid.Column="2" Classes="DifficultyBlock"
-                                              IsChecked="{Binding IsHardChecked}">
-                                     <Grid>
-                                         <TextBlock Text="hard"/>
-                                     </Grid>
-                                 </RadioButton>
+                         <Border CornerRadius="10" Height="250" Background="#aa606060">
+                             <Grid Height="200" VerticalAlignment="Center" RowDefinitions="*, 4*, *">
+                                 <TextBlock Grid.Row="0" Text="Оберіть рівень складності" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                                 <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
+                                     <RadioButton Grid.Column="0" Classes="DifficultyBlock"
+                                                  IsChecked="{Binding IsEasyChecked}">
+                                         <Grid>
+                                             <TextBlock Text="easy"/>
+                                         </Grid>
+                                     </RadioButton>
+                                     <RadioButton Grid.Column="1" Classes="DifficultyBlock"
+                                                  IsChecked="{Binding IsMediumChecked}">
+                                         <Grid>
+                                             <TextBlock Text="medium"/>
+                                         </Grid>
+                                     </RadioButton>
+                                     <RadioButton Grid.Column="2" Classes="DifficultyBlock"
+                                                  IsChecked="{Binding IsHardChecked}">
+                                         <Grid>
+                                             <TextBlock Text="hard"/>
+                                         </Grid>
+                                     </RadioButton>
+                                 </Grid>
+                                 <Grid Grid.Row="2" ColumnDefinitions="*, *" Height="40">
+                                     <Button Grid.Column="0" Content="Назад" Background="PowderBlue" FontSize="15"
+                                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                             HorizontalAlignment="Right" Width="120" Margin="2" Command="{Binding GoBack}"/> 
+                                     <Button Grid.Column="1" Content="Почати гру" Background="PowderBlue" FontSize="15"
+                                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                             HorizontalAlignment="Left" Width="120" Margin="2" Command="{Binding OpenGameBoard}"/>
+                                 </Grid>
                              </Grid>
-                             <Grid Grid.Row="2" ColumnDefinitions="*, *" Height="40">
-                                 <Button Grid.Column="0" Content="Назад" Background="PowderBlue" FontSize="15"
-                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                         HorizontalAlignment="Right" Width="120" Margin="2" Command="{Binding GoBack}"/> 
-                                 <Button Grid.Column="1" Content="Почати гру" Background="PowderBlue" FontSize="15"
-                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                         HorizontalAlignment="Left" Width="120" Margin="2" Command="{Binding OpenGameBoard}"/>
-                             </Grid>
-                         </Grid>
+                         </Border>
                      </Grid>
                  </Viewbox>
              </Grid>

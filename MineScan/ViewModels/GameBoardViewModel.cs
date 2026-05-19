@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.Input;
 using MineScan.Models;
 
@@ -12,7 +16,7 @@ public class GameBoardViewModel : ViewModelBase
     
     public ICommand OpenCellCommand { get; set; }
     public ICommand FlagCellCommand { get; set; }
-    
+    public ICommand RadarPingCommand { get; set; }
     public MineField MineField { get; }
 
     public List<Cell> Cells
@@ -43,7 +47,16 @@ public class GameBoardViewModel : ViewModelBase
             OnPropertyChanged(nameof(Lose));
         }
     }
-
+    public bool RadarUsed
+    {
+        get;
+        set
+        {
+            field = value;
+            OnPropertyChanged(nameof(RadarUsed));
+        }
+    }
+    
     public GameBoardViewModel()
     {
         var difficulty = SelectedDifficulty.Instance.ActualDifficulty;
@@ -51,27 +64,28 @@ public class GameBoardViewModel : ViewModelBase
 
         Win = false;
         Lose = false;
+        RadarUsed = false;
         
         switch (difficulty)
         {
             case GameDifficulty.Easy:
-                width = 8 ;
-                height = 8 ;
-                mines = 10 ;
+                width = 9;
+                height = 9;
+                mines = 10;
                 break;
             case GameDifficulty.Medium:
-                width = 12 ;
-                height = 12 ;
-                mines = 20 ;
+                width = 15;
+                height = 15;
+                mines = 30;
                 break;
             case GameDifficulty.Hard:
-                width = 16 ;
-                height = 16 ;
-                mines = 30 ;
+                width = 20;
+                height = 20;
+                mines = 60;
                 break;
             default:
-                width = 8;
-                height = 8;
+                width = 9;
+                height = 9;
                 mines = 10;
                 break;
         }
@@ -108,5 +122,31 @@ public class GameBoardViewModel : ViewModelBase
                 MineField.ToggleFlag(cell.X, cell.Y);
             }
         });
+        RadarPingCommand = new RelayCommand(UseRadarPing);
+    }
+
+    private void UseRadarPing()
+    {
+        if (Lose || Win) return;
+        
+        RadarUsed = true;
+        
+        var hiddenMines = Cells.Where(cell => cell is { IsMine: true, IsFlagged: false, IsOpen: false }).ToList();
+    
+        if (hiddenMines.Any())
+        {
+            var randomMine = hiddenMines[Random.Shared.Next(hiddenMines.Count)];
+        
+            randomMine.IsRadarScanning = true;
+        
+            Task.Run(async () =>
+            {
+                await Task.Delay(1000);
+                Dispatcher.UIThread.Post(() =>
+                {
+                    randomMine.IsRadarScanning = false;
+                });
+            });
+        }
     }
 }

@@ -8,39 +8,41 @@
              Background="{DynamicResource MainBackground}">
              <Viewbox Stretch="Uniform">
                  <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
-                     <Grid VerticalAlignment="Center" RowDefinitions="100, 250, 100">
-                         <TextBlock Grid.Row="0" Text="Теми" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" FontSize="20"/>
-                         <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
+                     <Border CornerRadius="10" Height="350" Background="#aa606060">
+                         <Grid VerticalAlignment="Center" RowDefinitions="50, 200, 50">
+                             <TextBlock Grid.Row="0" Text="Теми" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" FontSize="20"/>
+                             <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
+                             </Grid>
+                             <Grid Grid.Row="1">
+                                 <StackPanel VerticalAlignment="Center" 
+                                             HorizontalAlignment="Center" 
+                                             Spacing="15">
+                 
+                                     <Button Content="Світла тема" 
+                                             Width="200" HorizontalContentAlignment="Center"
+                                             Command="{Binding SetLightTheme}"/>
+                 
+                                     <Button Content="Темна тема" 
+                                             Width="200" HorizontalContentAlignment="Center"
+                                             Command="{Binding SetDarkTheme}"/>
+                 
+                                     <Button Content="Неонова тема" 
+                                             Width="200" HorizontalContentAlignment="Center"
+                                             Command="{Binding SetNeonTheme}"/>
+                 
+                                     <Button Content="Рожева тема" 
+                                             Width="200" HorizontalContentAlignment="Center"
+                                             Command="{Binding SetPinkTheme}"/>
+                 
+                                 </StackPanel>
+                             </Grid>
+                             <Grid Grid.Row="2" Height="40">
+                                 <Button Content="Назад" Background="PowderBlue" FontSize="15"
+                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                         HorizontalAlignment="Center" Width="120" Margin="2" Command="{Binding GoBack}"/> 
+                             </Grid>
                          </Grid>
-                         <Grid Grid.Row="1">
-                             <StackPanel VerticalAlignment="Center" 
-                                         HorizontalAlignment="Center" 
-                                         Spacing="15">
-            
-                                 <Button Content="Світла тема" 
-                                         Width="200" HorizontalContentAlignment="Center"
-                                         Command="{Binding SetLightTheme}"/>
-            
-                                 <Button Content="Темна тема" 
-                                         Width="200" HorizontalContentAlignment="Center"
-                                         Command="{Binding SetDarkTheme}"/>
-            
-                                 <Button Content="Неонова тема" 
-                                         Width="200" HorizontalContentAlignment="Center"
-                                         Command="{Binding SetNeonTheme}"/>
-            
-                                 <Button Content="Рожева тема" 
-                                         Width="200" HorizontalContentAlignment="Center"
-                                         Command="{Binding SetPinkTheme}"/>
-            
-                             </StackPanel>
-                         </Grid>
-                         <Grid Grid.Row="2" Height="40">
-                             <Button Content="Назад" Background="PowderBlue" FontSize="15"
-                                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                     HorizontalAlignment="Center" Width="120" Margin="2" Command="{Binding GoBack}"/> 
-                         </Grid>
-                     </Grid>
+                     </Border>
                  </Grid>
              </Viewbox>
 </UserControl>
