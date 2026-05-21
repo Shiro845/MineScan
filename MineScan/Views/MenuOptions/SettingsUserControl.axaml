@@ -3,7 +3,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="MineScan.Views.MenuOptions.SettingsUserControl"
+             xmlns:vm="using:MineScan.ViewModels"
+             x:Class="MineScan.Views.MenuOptions.SettingsUserControl" x:DataType="vm:SettingsViewModel"
              Background="{DynamicResource MainBackground}">
-    Welcome to Avalonia!
+             <Viewbox Stretch="Uniform">
+                 <Grid Width="350" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
+                     <Border CornerRadius="10" Height="250" Background="#60606060">
+                         <Grid VerticalAlignment="Center" RowDefinitions="50, 150, 50">
+                             <TextBlock Grid.Row="0" Text="Налаштування" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" FontSize="20"/>
+                             <Grid Grid.Row="1">
+                                 <StackPanel Orientation="Vertical">
+                                     <CheckBox Margin="10" Content="Minecraft Font" IsChecked="{Binding IsMinecraftFont}"/>
+                                 </StackPanel>
+                             </Grid>
+                             <Grid Grid.Row="2" Height="40">
+                                 <Button Content="Назад" Background="PowderBlue" FontSize="15"
+                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                         HorizontalAlignment="Center" Width="120" Margin="2" Command="{Binding GoBack}"/> 
+                             </Grid>
+                         </Grid>
+                     </Border>
+                 </Grid>
+             </Viewbox>
 </UserControl>

@@ -57,11 +57,43 @@ public class GameBoardViewModel : ViewModelBase
         }
     }
     
+    private DispatcherTimer? _timer;
+
+    public int SecondsPassed
+    {
+        get => field;
+        set
+        {
+            field = value;
+            OnPropertyChanged(nameof(SecondsPassed));
+            OnPropertyChanged(nameof(TimerText));
+        }
+    }
+    public string TimerText => TimeSpan.FromSeconds(SecondsPassed).ToString(@"mm\:ss");
+    
+    private void StartTimer()
+    {
+        if (_timer != null) return;
+        _timer = new DispatcherTimer
+        {
+            Interval = TimeSpan.FromSeconds(1)
+        };
+    
+        _timer.Tick += (sender, e) => SecondsPassed++;
+        _timer.Start();
+    }
+
+    private void StopTimer()
+    {
+        _timer?.Stop();
+        _timer = null;
+    }
+    
     public GameBoardViewModel()
     {
         var difficulty = SelectedDifficulty.Instance.ActualDifficulty;
+        var currentStats = SelectedDifficulty.Instance.GetCurrentStats();
         sbyte width, height, mines;
-
         Win = false;
         Lose = false;
         RadarUsed = false;
@@ -98,19 +130,31 @@ public class GameBoardViewModel : ViewModelBase
             if (cell != null)
             {
                 if (cell.IsOpen) { MineField.Chording(cell.X, cell.Y); }
-                if (!MineField.IsMinesSpawned) { MineField.SpawnMines(mines, cell.X, cell.Y); }
+
+                if (!MineField.IsMinesSpawned)
+                {
+                    MineField.SpawnMines(mines, cell.X, cell.Y);
+                    StartTimer();
+                }
                 MineField.OpenCell(cell.X, cell.Y);
 
                 if (MineField.IsExploded)
                 {
-                    SelectedDifficulty.Instance.GetCurrentStats().GamesPlayed++;
+                    StopTimer();
+                    currentStats.GamesPlayed++;
+                    currentStats.GamesPlayed++;
                     Lose = true;
                 }
 
                 else if (MineField.IsWon)
                 {
-                    SelectedDifficulty.Instance.GetCurrentStats().GamesPlayed++;
-                    SelectedDifficulty.Instance.GetCurrentStats().GamesWon++;
+                    StopTimer();
+                    currentStats.GamesPlayed++;
+                    currentStats.GamesWon++;
+                    if (currentStats.BestTime == 0 || SecondsPassed < SelectedDifficulty.Instance.GetCurrentStats().BestTime)
+                    {
+                        currentStats.BestTime = SecondsPassed;
+                    }
                     Win = true;
                 }
             }

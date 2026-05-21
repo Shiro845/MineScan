@@ -8,7 +8,7 @@
              Background="{DynamicResource MainBackground}">
              <Viewbox Stretch="Uniform">
                  <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
-                     <Border CornerRadius="10" Height="350" Background="#aa606060">
+                     <Border CornerRadius="10" Height="350" Background="#60606060">
                          <Grid VerticalAlignment="Center" RowDefinitions="50, 200, 50">
                              <TextBlock Grid.Row="0" Text="Теми" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" FontSize="20"/>
                              <Grid Grid.Row="1" ColumnDefinitions="*, *, *">

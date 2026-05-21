@@ -6,6 +6,10 @@
              
     <Application.Resources>
         <ResourceDictionary>
+            
+            <FontFamily x:Key="DefaultFont">System-UI</FontFamily>
+            <FontFamily x:Key="MinecraftFont">avares://MineScan/Assets/Fonts/#Minecraft 1.1</FontFamily>
+            
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="{x:Static vm:ThemesViewModel.LightTheme}">
                     <ResourceDictionary.MergedDictionaries>
@@ -36,6 +40,13 @@
     
     <Application.Styles>
         <FluentTheme />
+        
+        <Style Selector="TextBlock">
+            <Setter Property="FontFamily" Value="{DynamicResource GameFont}"/>
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="FontFamily" Value="{DynamicResource GameFont}"/>
+        </Style>
     </Application.Styles>
              
     <Application.DataTemplates>

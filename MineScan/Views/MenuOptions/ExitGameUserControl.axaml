@@ -8,10 +8,10 @@
              Background="{DynamicResource MainBackground}">
              <Viewbox Stretch="Uniform">
                  <Panel Width="300" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
-                     <Border CornerRadius="10" Height="200" Background="#aa606060">
+                     <Border CornerRadius="10" Height="200" Background="#60606060">
                         <Grid VerticalAlignment="Center" RowDefinitions="*, 200, *">
                             <Grid Grid.Row="1" RowDefinitions="7*, 3*">
-                                <TextBlock Grid.Row="0" Text="Ви справді хочете вийти?"
+                                <TextBlock Grid.Row="0" Text="Ви справді хочете вийти?" TextWrapping="Wrap"
                                            VerticalAlignment="Center" HorizontalAlignment="Center"
                                            FontSize="20"/>
                                 <Grid Grid.Row="1" ColumnDefinitions="*, *">

@@ -74,10 +74,10 @@
                                  <Grid Grid.Row="2" ColumnDefinitions="*, *" Height="40">
                                      <Button Grid.Column="0" Content="Назад" Background="PowderBlue" FontSize="15"
                                              HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                             HorizontalAlignment="Right" Width="120" Margin="2" Command="{Binding GoBack}"/> 
+                                             HorizontalAlignment="Right" Width="130" Height="33" Margin="2" Command="{Binding GoBack}"/> 
                                      <Button Grid.Column="1" Content="Почати гру" Background="PowderBlue" FontSize="15"
                                              HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                             HorizontalAlignment="Left" Width="120" Margin="2" Command="{Binding OpenGameBoard}"/>
+                                             HorizontalAlignment="Left" Width="130" Height="33" Margin="2" Command="{Binding OpenGameBoard}"/>
                                  </Grid>
                              </Grid>
                          </Border>

@@ -6,34 +6,52 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="vm:StatisticsViewModel"
              x:Class="MineScan.Views.MenuOptions.StatisticsUserControl"
              Background="{DynamicResource MainBackground}">
-             <Viewbox Stretch="Uniform">
-                     <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
-                         <Grid VerticalAlignment="Center" RowDefinitions="150, 150, 150">
+             <UserControl.Styles>
+                 <Style Selector="TextBlock">
+                     <Setter Property="HorizontalAlignment" Value="Center"/>
+                     <Setter Property="Foreground" Value="Black"/>
+                 </Style>
+             </UserControl.Styles>
+                <Viewbox Stretch="Uniform">
+                     <Grid Width="500" Height="475" HorizontalAlignment="Center" VerticalAlignment="Center">
+                         <Grid VerticalAlignment="Center" RowDefinitions="150, 175, 150">
                              <TextBlock Grid.Row="0" Text="Статистика" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" FontSize="20"/>
                              <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
-                                 <Grid Grid.Column="0" Background="Lime" Margin="5" RowDefinitions="*, *, *, *">
-                                     <TextBlock Grid.Row="0" Text="Кількість ігор:"/>
-                                     <TextBlock Grid.Row="1" Text="{Binding Stats.EasyStats.GamesPlayed}"/>
-                                     <TextBlock Grid.Row="2" Text="Вінрейт:"/>
-                                     <TextBlock Grid.Row="3" Text="{Binding Stats.EasyStats.WinRate}"/>
-                                 </Grid>
-                                 <Grid Grid.Column="1" Background="Orange" Margin="5" RowDefinitions="*, *, *, *">
-                                     <TextBlock Grid.Row="0" Text="Кількість ігор:"/>
-                                     <TextBlock Grid.Row="1" Text="{Binding Stats.MediumStats.GamesPlayed}"/>
-                                     <TextBlock Grid.Row="2" Text="Вінрейт:"/>
-                                     <TextBlock Grid.Row="3" Text="{Binding Stats.MediumStats.WinRate}"/>
-                                 </Grid>
-                                 <Grid Grid.Column="2" Background="Red" Margin="5" RowDefinitions="*, *, *, *">
-                                     <TextBlock Grid.Row="0" Text="Кількість ігор:"/>
-                                     <TextBlock Grid.Row="1" Text="{Binding Stats.HardStats.GamesPlayed}"/>
-                                     <TextBlock Grid.Row="2" Text="Вінрейт:"/>
-                                     <TextBlock Grid.Row="3" Text="{Binding Stats.HardStats.WinRate}"/>
-                                 </Grid>
+                                 <Border Grid.Column="0" Margin="5" CornerRadius="5" Background="Lime" BorderBrush="Black" BorderThickness="3">
+                                     <Grid Margin="5" RowDefinitions="*, *, *, *, *, *">
+                                         <TextBlock Grid.Row="0" Text="Кількість ігор:"/>
+                                         <TextBlock Grid.Row="1" Text="{Binding Stats.EasyStats.GamesPlayed}"/>
+                                         <TextBlock Grid.Row="2" Text="Вінрейт:"/>
+                                         <TextBlock Grid.Row="3" Text="{Binding Stats.EasyStats.WinRate}"/>
+                                         <TextBlock Grid.Row="4" Text="Найкращий Час:"/>
+                                         <TextBlock Grid.Row="5" Text="{Binding Stats.EasyStats.BestTimeText}"/>
+                                     </Grid>
+                                 </Border>
+                                 <Border Grid.Column="1" Margin="5" CornerRadius="5" Background="Orange" BorderBrush="Black" BorderThickness="3">
+                                    <Grid Margin="5" RowDefinitions="*, *, *, *, *, *">
+                                        <TextBlock Grid.Row="0" Text="Кількість ігор:"/>
+                                        <TextBlock Grid.Row="1" Text="{Binding Stats.MediumStats.GamesPlayed}"/>
+                                        <TextBlock Grid.Row="2" Text="Вінрейт:"/>
+                                        <TextBlock Grid.Row="3" Text="{Binding Stats.MediumStats.WinRate}"/>
+                                        <TextBlock Grid.Row="4" Text="Найкращий Час:"/>
+                                        <TextBlock Grid.Row="5" Text="{Binding Stats.MediumStats.BestTimeText}"/>
+                                    </Grid>
+                                 </Border>
+                                 <Border Grid.Column="2" Margin="5" CornerRadius="5" Background="Red" BorderBrush="Black" BorderThickness="3">
+                                    <Grid Margin="5" RowDefinitions="*, *, *, *, *, *">
+                                        <TextBlock Grid.Row="0" Text="Кількість ігор:"/>
+                                        <TextBlock Grid.Row="1" Text="{Binding Stats.HardStats.GamesPlayed}"/>
+                                        <TextBlock Grid.Row="2" Text="Вінрейт:"/>
+                                        <TextBlock Grid.Row="3" Text="{Binding Stats.HardStats.WinRate}"/>
+                                        <TextBlock Grid.Row="4" Text="Найкращий Час:"/>
+                                        <TextBlock Grid.Row="5" Text="{Binding Stats.HardStats.BestTimeText}"/>
+                                    </Grid>
+                                 </Border>
                              </Grid>
                              <Grid Grid.Row="2">
                                  <Button Content="Назад" Background="PowderBlue" FontSize="15"
                                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                         HorizontalAlignment="Left" VerticalAlignment="Bottom"  Width="120" Margin="2" Command="{Binding GoBack}"/>
+                                         HorizontalAlignment="Center" VerticalAlignment="Center"  Width="120" Margin="2" Command="{Binding GoBack}"/>
                              </Grid>
                          </Grid>
                      </Grid>
