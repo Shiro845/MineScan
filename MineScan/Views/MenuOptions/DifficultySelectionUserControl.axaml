@@ -7,7 +7,6 @@
              x:Class="MineScan.Views.MenuOptions.DifficultySelectionUserControl">
     <UserControl.Styles>
         <Style Selector="RadioButton.DifficultyBlock">
-            <Setter Property="Margin" Value="5"/>
             <Setter Property="CornerRadius" Value="5"/>
             <Setter Property="BorderThickness" Value="5"/>
             <Setter Property="Background" Value="#405060"/>
@@ -36,47 +35,99 @@
             </Setter>
         </Style>
         
-        <Style Selector="RadioButton:checked">
-            <Setter Property="Background" Value="Pink"/>
+        <Style Selector="Border.Difficulty">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="3"/>
+        </Style>
+        
+        <Style Selector="RadioButton.Easy:checked">
+            <Setter Property="Background" Value="Green"/>
+            <Setter Property="RenderTransform" Value="scale(1.05)" />
+        </Style>
+        
+        <Style Selector="RadioButton.Medium:checked">
+            <Setter Property="Background" Value="DarkOrange"/>
+            <Setter Property="RenderTransform" Value="scale(1.05)" />
+        </Style>
+        
+        <Style Selector="RadioButton.Hard:checked">
+            <Setter Property="Background" Value="DarkRed"/>
+            <Setter Property="RenderTransform" Value="scale(1.05)" />
         </Style>
             
         <Style Selector="RadioButton.DifficultyBlock:pointerover">
             <Setter Property="RenderTransform" Value="scale(1.05)" />
-            <Setter Property="Background" Value="PaleVioletRed"/>
         </Style>
     </UserControl.Styles>
     <Grid Background="{DynamicResource MainBackground}">
                  <Viewbox Stretch="Uniform">
                      <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
-                         <Border CornerRadius="10" Height="250" Background="#aa606060">
+                         <Border CornerRadius="10" Height="250" Background="#aa808080">
                              <Grid Height="200" VerticalAlignment="Center" RowDefinitions="*, 4*, *">
                                  <TextBlock Grid.Row="0" Text="Оберіть рівень складності" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
                                  <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
-                                     <RadioButton Grid.Column="0" Classes="DifficultyBlock"
-                                                  IsChecked="{Binding IsEasyChecked}">
-                                         <Grid>
-                                             <TextBlock Text="easy"/>
-                                         </Grid>
-                                     </RadioButton>
-                                     <RadioButton Grid.Column="1" Classes="DifficultyBlock"
-                                                  IsChecked="{Binding IsMediumChecked}">
-                                         <Grid>
-                                             <TextBlock Text="medium"/>
-                                         </Grid>
-                                     </RadioButton>
-                                     <RadioButton Grid.Column="2" Classes="DifficultyBlock"
-                                                  IsChecked="{Binding IsHardChecked}">
-                                         <Grid>
-                                             <TextBlock Text="hard"/>
-                                         </Grid>
-                                     </RadioButton>
+                                     <Border Grid.Column="0" Classes="Difficulty" BorderBrush="Black" CornerRadius="5" BorderThickness="3" Margin="5">
+                                         <RadioButton Classes="DifficultyBlock Easy"
+                                                      IsChecked="{Binding IsEasyChecked}">
+                                             <Grid RowDefinitions="*, *">
+                                                 <TextBlock Grid.Row="0" Text="Easy" FontWeight="Black" Foreground="LimeGreen" FontSize="20" HorizontalAlignment="Center">
+                                                     <TextBlock.Effect>
+                                                         <DropShadowEffect Color="Black" 
+                                                                           BlurRadius="0" 
+                                                                           OffsetX="1.1"
+                                                                           OffsetY="1.1"
+                                                                           Opacity="0.5" />
+                                                     </TextBlock.Effect>
+                                                 </TextBlock>
+                                                 <TextBlock Grid.Row="1" Text="Mines: 20; Size: 9x9" FontWeight="Black" VerticalAlignment="Bottom" FontSize="8"/>
+                                             </Grid>
+                                         </RadioButton>
+                                     </Border>
+                                     <Border Grid.Column="1" Classes="Difficulty" BorderBrush="Black" CornerRadius="5" BorderThickness="3" Margin="5">
+                                         <RadioButton Classes="DifficultyBlock Medium"
+                                                      IsChecked="{Binding IsMediumChecked}">
+                                             <Grid RowDefinitions="*, *">
+                                                 <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Medium" FontWeight="Black" Foreground="Orange"  FontSize="20">
+                                                     <TextBlock.Effect>
+                                                         <DropShadowEffect Color="Black" 
+                                                                           BlurRadius="0" 
+                                                                           OffsetX="1.1"
+                                                                           OffsetY="1.1"
+                                                                           Opacity="0.5" />
+                                                     </TextBlock.Effect>
+                                                 </TextBlock>
+                                                 <TextBlock Grid.Row="1" Text="Mines: 30; Size: 15x15" FontWeight="Black" VerticalAlignment="Bottom" FontSize="8"/>
+                                             </Grid>
+                                         </RadioButton>
+                                     </Border>
+                                     <Border Grid.Column="2" Classes="Difficulty" BorderBrush="Black" CornerRadius="5" BorderThickness="3" Margin="5">
+                                         <RadioButton Classes="DifficultyBlock Hard"
+                                                      IsChecked="{Binding IsHardChecked}">
+                                             <Grid RowDefinitions="*, *">
+                                                 <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Hard" FontWeight="Black" Foreground="Red"  FontSize="20">
+                                                     <TextBlock.Effect>
+                                                         <DropShadowEffect Color="Black" 
+                                                                           BlurRadius="0" 
+                                                                           OffsetX="1.1"
+                                                                           OffsetY="1.1"
+                                                                           Opacity="0.5" />
+                                                     </TextBlock.Effect>
+                                                 </TextBlock>
+                                                 <TextBlock Grid.Row="1" Text="Mines: 60; Size: 20x20" FontWeight="Black" VerticalAlignment="Bottom" FontSize="8"/>
+                                             </Grid>
+                                         </RadioButton>
+                                     </Border>
                                  </Grid>
                                  <Grid Grid.Row="2" ColumnDefinitions="*, *" Height="40">
-                                     <Button Grid.Column="0" Content="Назад" Background="PowderBlue" FontSize="15"
-                                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                     <Button Grid.Column="0" Content="Назад"
+                                             Background="{DynamicResource ButtonBackground}"
+                                             Foreground="{DynamicResource ButtonForeground}"
+                                             FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                              HorizontalAlignment="Right" Width="130" Height="33" Margin="2" Command="{Binding GoBack}"/> 
-                                     <Button Grid.Column="1" Content="Почати гру" Background="PowderBlue" FontSize="15"
-                                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                     <Button Grid.Column="1" Content="Почати гру"
+                                             Background="{DynamicResource ButtonBackground}"
+                                             Foreground="{DynamicResource ButtonForeground}"
+                                             FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                              HorizontalAlignment="Left" Width="130" Height="33" Margin="2" Command="{Binding OpenGameBoard}"/>
                                  </Grid>
                              </Grid>

@@ -1,6 +1,20 @@
-﻿namespace MineScan.ViewModels;
+﻿using MineScan.Models;
+
+namespace MineScan.ViewModels;
 
 public class PlayingTutorialViewModel : ViewModelBase
 {
-    
+    public void GoBack() => NavigationService.Instance.NavigateTo<MainMenuViewModel>();
+
+    public string GameRulesText => """
+                                           ПРАВИЛА ГРИ "MINESCAN"
+
+                                           1. Основна мета гри — відкрити всі безпечні клітинки на полі, не підірвавшись на мінах.
+                                           2. Цифра в клітинці показує, скільки саме мін розташовано навколо неї (у радіусі 1 клітинки).
+                                           3. Використовуйте "Правий клік", щоб поставити прапорець на клітинку, де на вашу думку схована міна.
+
+                                           ВИКОРИСТАННЯ РАДАРА:
+                                           Натисніть кнопку "Радар", на протязі 1 секунди радар підсвітить рандомну клітинку з міною(помічені ігноруються).
+                                           Радар можна використати лише один раз за гру!
+                                           """;
 }

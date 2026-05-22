@@ -9,7 +9,6 @@
              <UserControl.Styles>
                  <Style Selector="TextBlock">
                      <Setter Property="HorizontalAlignment" Value="Center"/>
-                     <Setter Property="Foreground" Value="Black"/>
                  </Style>
              </UserControl.Styles>
                 <Viewbox Stretch="Uniform">
@@ -49,9 +48,12 @@
                                  </Border>
                              </Grid>
                              <Grid Grid.Row="2">
-                                 <Button Content="Назад" Background="PowderBlue" FontSize="15"
+                                 <Button Content="Назад" 
+                                         Background="{DynamicResource ButtonBackground}"
+                                         Foreground="{DynamicResource ButtonForeground}"
+                                         FontSize="15"
                                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                         HorizontalAlignment="Center" VerticalAlignment="Center"  Width="120" Margin="2" Command="{Binding GoBack}"/>
+                                         HorizontalAlignment="Center" VerticalAlignment="Center"  Width="120" Height="33" Margin="2" Command="{Binding GoBack}"/>
                              </Grid>
                          </Grid>
                      </Grid>

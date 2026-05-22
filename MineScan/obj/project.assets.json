@@ -482,6 +482,28 @@
           }
         }
       },
+      "Material.Icons/3.0.3-nightly.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Material.Icons.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Material.Icons.dll": {}
+        }
+      },
+      "Material.Icons.Avalonia/3.0.3-nightly.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "12.0.0",
+          "Material.Icons": "3.0.3-nightly.0.2"
+        },
+        "compile": {
+          "lib/net8.0/Material.Icons.Avalonia.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Material.Icons.Avalonia.dll": {}
+        }
+      },
       "MicroCom.Runtime/0.11.4": {
         "type": "package",
         "compile": {
@@ -1395,6 +1417,32 @@
         "runtimes/win-x86/native/libHarfBuzzSharp.pdb"
       ]
     },
+    "Material.Icons/3.0.3-nightly.0.2": {
+      "sha512": "C1bAvU6x67XIX/L7b0mPCDIMWIiQ02rvUnWCH64/krfnlvyi3FM8HwgYAUcqD8dNN7pBUtki4WggDwdtUZfdeQ==",
+      "type": "package",
+      "path": "material.icons/3.0.3-nightly.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/netstandard2.0/Material.Icons.dll",
+        "material.icons.3.0.3-nightly.0.2.nupkg.sha512",
+        "material.icons.nuspec"
+      ]
+    },
+    "Material.Icons.Avalonia/3.0.3-nightly.0.2": {
+      "sha512": "cOYU3HpBovt6gg+Q3QW7DpkeXmbKT2yKKnm+utsP5+OfdgPQ71pYz0mma7CMAWjbSityTt0k8WiM6gUHGvBU9g==",
+      "type": "package",
+      "path": "material.icons.avalonia/3.0.3-nightly.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net8.0/Material.Icons.Avalonia.dll",
+        "material.icons.avalonia.3.0.3-nightly.0.2.nupkg.sha512",
+        "material.icons.avalonia.nuspec"
+      ]
+    },
     "MicroCom.Runtime/0.11.4": {
       "sha512": "yZ8+Lgwo+KtRI29TB2mIOEMzV+csMJ+pKZg4YHReAP3vRewWLKKeYfrBDo5FS69rWnEbCfU3sbM+ZEQr+GDLtg==",
       "type": "package",
@@ -1913,6 +1961,7 @@
       "Avalonia.Themes.Fluent >= 12.0.3",
       "AvaloniaUI.DiagnosticsSupport >= 2.2.1",
       "CommunityToolkit.Mvvm >= 8.4.2",
+      "Material.Icons.Avalonia >= 3.0.3-nightly.0.2",
       "Xaml.Behaviors.Avalonia >= 12.0.0"
     ]
   },
@@ -1989,6 +2038,10 @@
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.4.2, )"
+          },
+          "Material.Icons.Avalonia": {
+            "target": "Package",
+            "version": "[3.0.3-nightly.0.2, )"
           },
           "Xaml.Behaviors.Avalonia": {
             "target": "Package",

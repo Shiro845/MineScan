@@ -1,4 +1,6 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="MainBackground">#202020</SolidColorBrush>
+    <SolidColorBrush x:Key="MainBackground">#202030</SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonBackground">#00ffff</SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonForeground">#000000</SolidColorBrush>
 </ResourceDictionary>

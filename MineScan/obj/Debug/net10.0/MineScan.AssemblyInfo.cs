@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MineScan")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba64c26c0a2494208e66d2720c6973eadc485f95")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d09fd8c518b10c49751140024b73d588745dca75")]
 [assembly: System.Reflection.AssemblyProductAttribute("MineScan")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MineScan")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

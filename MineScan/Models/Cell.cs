@@ -15,6 +15,8 @@ public class Cell : ObservableObject
         get => field;
         set { SetProperty(ref field, value); } 
     }
+    
+
     public bool IsFlagged
     {
         get => field;

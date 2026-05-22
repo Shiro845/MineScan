@@ -38,10 +38,19 @@
                  <Viewbox Stretch="Uniform">
                      <Grid Width="300" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center" RowDefinitions="*, 4*, *">
                          <Grid Grid.Row="0">
-                             <Button Content="Радар" Background="PowderBlue" FontSize="15"
-                                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                     HorizontalAlignment="Left" Width="100" Margin="20, 2, 2, 2" IsEnabled="{Binding !RadarUsed}"
-                                     Command="{Binding RadarPingCommand}"/>
+                             <Border BorderBrush="Black"
+                                     BorderThickness="3"
+                                     CornerRadius="5"
+                                     Width="100" Height="35"
+                                     HorizontalAlignment="Left"
+                                     Margin="20, 2, 2, 2">
+                                 <Button Content="Радар" FontSize="15" Padding="0"
+                                         Background="{DynamicResource ButtonBackground}"
+                                         Foreground="{DynamicResource ButtonForeground}"
+                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                         VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{Binding !RadarUsed}"
+                                         Command="{Binding RadarPingCommand}"/>
+                             </Border>
                              <Border Margin="2, 2, 20, 2" Width="100" Height="35"
                                      HorizontalAlignment="Right"
                                      BorderBrush="Black"
@@ -102,7 +111,7 @@
                                 </Border>
                             </Viewbox>
                             <Viewbox Stretch="Uniform">
-                                    <Border CornerRadius="5" 
+                                    <Border CornerRadius="5"
                                             Height="200" Width="200"
                                             Background="#c2606060"
                                             IsVisible="{Binding Lose}">
@@ -131,12 +140,16 @@
                             </Viewbox>
                          </Grid>
                          <Grid Grid.Row="2" ColumnDefinitions="*, *">
-                             <Button Grid.Column="0" Content="Меню" Background="PowderBlue" FontSize="15"
+                             <Button Grid.Column="0" Content="Меню" FontSize="15"
+                                     Background="{DynamicResource ButtonBackground}"
+                                     Foreground="{DynamicResource ButtonForeground}"
                                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                     HorizontalAlignment="Right" Width="100" Margin="2" Command="{Binding GoBack}"/> 
-                             <Button Grid.Column="1" Content="Заново" Background="PowderBlue" FontSize="15"
+                                     HorizontalAlignment="Right" Width="100" Height="33" Margin="2" Command="{Binding GoBack}"/> 
+                             <Button Grid.Column="1" Content="Заново" FontSize="15"
+                                     Background="{DynamicResource ButtonBackground}"
+                                     Foreground="{DynamicResource ButtonForeground}"
                                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                     HorizontalAlignment="Left" Width="100" Margin="2" Command="{Binding Restart}"/>
+                                     HorizontalAlignment="Left" Width="100" Height="33" Margin="2" Command="{Binding Restart}"/>
                          </Grid>
                      </Grid>
                  </Viewbox>

@@ -2,8 +2,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:viewModels="using:MineScan.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="viewModels:PlayingTutorialViewModel"
              x:Class="MineScan.Views.MenuOptions.PlayingTutorialUserControl"
              Background="{DynamicResource MainBackground}">
-    Welcome to Avalonia!
+             <Viewbox Stretch="Uniform">
+                 <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
+                     <Border CornerRadius="10" Height="350" Background="#60606060">
+                         <Grid VerticalAlignment="Center" RowDefinitions="50, 250, 50">
+                             <TextBlock Grid.Row="0" Text="Як грати?" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" FontSize="20"/>
+                             <Grid Grid.Row="1">
+                                 <Panel Background="#30000000">
+                                     <TextBlock Text="{Binding GameRulesText}"
+                                                TextWrapping="Wrap"
+                                                FontSize="10"
+                                                LineHeight="20"
+                                                TextAlignment="Left"
+                                                Margin="5"/>
+                                 </Panel>
+                             </Grid>
+                             <Grid Grid.Row="2" Height="40">
+                                 <Button Content="Назад" 
+                                         Background="{DynamicResource ButtonBackground}"
+                                         Foreground="{DynamicResource ButtonForeground}"
+                                         FontSize="15"
+                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                         HorizontalAlignment="Center" Width="120" Height="33" Margin="2" Command="{Binding GoBack}"/> 
+                             </Grid>
+                         </Grid>
+                     </Border>
+                 </Grid>
+             </Viewbox>
 </UserControl>

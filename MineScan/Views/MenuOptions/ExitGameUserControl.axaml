@@ -15,13 +15,19 @@
                                            VerticalAlignment="Center" HorizontalAlignment="Center"
                                            FontSize="20"/>
                                 <Grid Grid.Row="1" ColumnDefinitions="*, *">
-                                    <Button Grid.Column="0" Content="Ні" Background="PowderBlue" FontSize="15"
+                                    <Button Grid.Column="0" Content="Ні"
+                                            Background="{DynamicResource ButtonBackground}"
+                                            Foreground="{DynamicResource ButtonForeground}"
+                                            FontSize="15"
                                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                            HorizontalAlignment="Center" Width="120" Margin="2"
+                                            HorizontalAlignment="Center" Width="120" Height="33" Margin="2"
                                             Command="{Binding GoBack}"/>
-                                    <Button Grid.Column="1" Content="Так" Background="PowderBlue" FontSize="15"
+                                    <Button Grid.Column="1" Content="Так"
+                                            Background="{DynamicResource ButtonBackground}"
+                                            Foreground="{DynamicResource ButtonForeground}"
+                                            FontSize="15"
                                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                            HorizontalAlignment="Center" Width="120" Margin="2"
+                                            HorizontalAlignment="Center" Width="120" Height="33" Margin="2"
                                             Command="{Binding Exit}"/>
                                 </Grid>
                             </Grid>
