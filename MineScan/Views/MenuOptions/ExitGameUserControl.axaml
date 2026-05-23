@@ -6,6 +6,12 @@
              xmlns:vm="using:MineScan.ViewModels.MenuOptions"
              x:Class="MineScan.Views.MenuOptions.ExitGameUserControl" x:DataType="vm:ExitGameViewModel"
              Background="{DynamicResource MainBackground}">
+             <UserControl.Styles>
+                 <Style Selector="Button:pointerover /template/ ContentPresenter">
+                     <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
+                     <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
+                 </Style>
+             </UserControl.Styles>
              <Viewbox Stretch="Uniform">
                  <Panel Width="300" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
                      <Border CornerRadius="10" Height="200" Background="#60606060">
@@ -13,7 +19,7 @@
                             <Grid Grid.Row="1" RowDefinitions="7*, 3*">
                                 <TextBlock Grid.Row="0" Text="Ви справді хочете вийти?" TextWrapping="Wrap"
                                            VerticalAlignment="Center" HorizontalAlignment="Center"
-                                           FontSize="20"/>
+                                           Foreground="{DynamicResource TextBlockForeground}" FontSize="20"/>
                                 <Grid Grid.Row="1" ColumnDefinitions="*, *">
                                     <Button Grid.Column="0" Content="Ні"
                                             Background="{DynamicResource ButtonBackground}"

@@ -6,11 +6,21 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="menuOptions:ThemesViewModel"
              x:Class="MineScan.Views.MenuOptions.ThemesUserControl"
              Background="{DynamicResource MainBackground}">
+             <UserControl.Styles>
+                 <Style Selector="Button:pointerover /template/ ContentPresenter">
+                     <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
+                     <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
+                 </Style>
+             </UserControl.Styles>
              <Viewbox Stretch="Uniform">
                  <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
                      <Border CornerRadius="10" Height="350" Background="#60606060">
                          <Grid VerticalAlignment="Center" RowDefinitions="50, 200, 50">
-                             <TextBlock Grid.Row="0" Text="Теми" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" FontSize="20"/>
+                             <TextBlock Grid.Row="0" Text="Теми"
+                                        Foreground="{DynamicResource TextBlockForeground}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Margin="5" FontSize="20"/>
                              <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
                              </Grid>
                              <Grid Grid.Row="1">

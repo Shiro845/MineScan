@@ -11,8 +11,6 @@ public class MineField
     private Cell[,] _field;
 
     public bool IsMinesSpawned { get; private set; } = false;
-    
-    
     public bool IsExploded { private set; get; }
     public bool IsWon { private set; get; }
     public bool IsGameOver => IsExploded || IsWon;
@@ -21,10 +19,10 @@ public class MineField
     {
         _field = new Cell[width, height];
         
-        FillingCells(width, height);
+        FillingCells();
     }
 
-    public void FillingCells(int width, int height)
+    public void FillingCells()
     {
         for (int i = 0; i < _field.GetLength(0); i++)
         {
@@ -112,9 +110,12 @@ public class MineField
     public List<Cell> ToCellList()
     {
         var flatList = new List<Cell>();
-        foreach (var cell in _field)
+        for (int y = 0; y < _field.GetLength(1); y++)
         {
-            flatList.Add(cell);
+            for (int x = 0; x < _field.GetLength(0); x++)
+            {
+                flatList.Add(_field[x, y]);
+            }
         }
         return flatList;
     }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Windows.Input;
-using CommunityToolkit.Mvvm.Input;
-using MineScan.Models;
-
-namespace MineScan.ViewModels;
+﻿namespace MineScan.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {

@@ -16,9 +16,4 @@ public partial class NavigationService : ObservableObject
     {
         CurrentPage = new T();
     }
-    
-    public void NavigateTo(object viewModel)
-    {
-        CurrentPage = viewModel;
-    }
 }

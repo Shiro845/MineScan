@@ -17,7 +17,7 @@ public class GameBoardViewModel : ViewModelBase
     public ICommand OpenCellCommand { get; set; }
     public ICommand FlagCellCommand { get; set; }
     public ICommand RadarPingCommand { get; set; }
-    public MineField MineField { get; }
+    private MineField MineField { get; }
 
     public List<Cell> Cells
     {
@@ -79,7 +79,7 @@ public class GameBoardViewModel : ViewModelBase
             Interval = TimeSpan.FromSeconds(1)
         };
     
-        _timer.Tick += (sender, e) => SecondsPassed++;
+        _timer.Tick += (sender, _) => SecondsPassed++;
         _timer.Start();
     }
 
@@ -88,12 +88,15 @@ public class GameBoardViewModel : ViewModelBase
         _timer?.Stop();
         _timer = null;
     }
+
+    public sbyte Width { get; set; }
+    public sbyte Height { get; set; }
+    public sbyte Mines { get; set; }
     
     public GameBoardViewModel()
     {
         var difficulty = SelectedDifficulty.Instance.ActualDifficulty;
         var currentStats = SelectedDifficulty.Instance.GetCurrentStats();
-        sbyte width, height, mines;
         Win = false;
         Lose = false;
         RadarUsed = false;
@@ -101,28 +104,28 @@ public class GameBoardViewModel : ViewModelBase
         switch (difficulty)
         {
             case GameDifficulty.Easy:
-                width = 9;
-                height = 9;
-                mines = 10;
+                Width = 9;
+                Height = 9;
+                Mines = 10;
                 break;
             case GameDifficulty.Medium:
-                width = 15;
-                height = 15;
-                mines = 30;
+                Width = 16;
+                Height = 16;
+                Mines = 40;
                 break;
             case GameDifficulty.Hard:
-                width = 20;
-                height = 20;
-                mines = 60;
+                Width = 30;
+                Height = 20;
+                Mines = 120;
                 break;
             default:
-                width = 9;
-                height = 9;
-                mines = 10;
+                Width = 9;
+                Height = 9;
+                Mines = 10;
                 break;
         }
         
-        MineField = new MineField(width, height);
+        MineField = new MineField(Width, Height);
         Cells = MineField.ToCellList();
         
         OpenCellCommand = new RelayCommand<Cell>(cell =>
@@ -133,7 +136,7 @@ public class GameBoardViewModel : ViewModelBase
 
                 if (!MineField.IsMinesSpawned)
                 {
-                    MineField.SpawnMines(mines, cell.X, cell.Y);
+                    MineField.SpawnMines(Mines, cell.X, cell.Y);
                     StartTimer();
                 }
                 MineField.OpenCell(cell.X, cell.Y);

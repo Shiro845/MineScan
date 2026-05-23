@@ -1,9 +1,4 @@
-﻿using System;
-using System.Windows.Input;
-using CommunityToolkit.Mvvm.Input;
-using MineScan.Models;
-using MineScan.ViewModels.MenuOptions;
-using MineScan.Views.MenuOptions;
+﻿using MineScan.ViewModels.MenuOptions;
 
 namespace MineScan.ViewModels;
 

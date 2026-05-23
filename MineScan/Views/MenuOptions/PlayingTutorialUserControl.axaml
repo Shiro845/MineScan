@@ -6,11 +6,20 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="viewModels:PlayingTutorialViewModel"
              x:Class="MineScan.Views.MenuOptions.PlayingTutorialUserControl"
              Background="{DynamicResource MainBackground}">
+             <UserControl.Styles>
+                 <Style Selector="Button:pointerover /template/ ContentPresenter">
+                     <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
+                     <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
+                 </Style>
+             </UserControl.Styles>
              <Viewbox Stretch="Uniform">
                  <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
                      <Border CornerRadius="10" Height="350" Background="#60606060">
                          <Grid VerticalAlignment="Center" RowDefinitions="50, 250, 50">
-                             <TextBlock Grid.Row="0" Text="Як грати?" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" FontSize="20"/>
+                             <TextBlock Grid.Row="0" Text="Як грати?"
+                                        Foreground="{DynamicResource TextBlockForeground}"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Margin="5" FontSize="20"/>
                              <Grid Grid.Row="1">
                                  <Panel Background="#30000000">
                                      <TextBlock Text="{Binding GameRulesText}"
@@ -22,7 +31,7 @@
                                  </Panel>
                              </Grid>
                              <Grid Grid.Row="2" Height="40">
-                                 <Button Content="Назад" 
+                                 <Button Content="Назад"
                                          Background="{DynamicResource ButtonBackground}"
                                          Foreground="{DynamicResource ButtonForeground}"
                                          FontSize="15"

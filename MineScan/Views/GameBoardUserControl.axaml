@@ -33,25 +33,32 @@
                 <Style Selector="Button.Cell.RadarHighlight">
                     <Setter Property="Background" Value="Aqua"/>
                 </Style>
+                <Style Selector="Button.Btn:pointerover /template/ ContentPresenter">
+                    <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
+                </Style>
             </UserControl.Styles>
             <Grid Background="{DynamicResource MainBackground}">
                  <Viewbox Stretch="Uniform">
-                     <Grid Width="300" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center" RowDefinitions="*, 4*, *">
+                     <Grid HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           RowDefinitions="Auto, Auto, Auto"
+                           MinWidth="290">
                          <Grid Grid.Row="0">
                              <Border BorderBrush="Black"
                                      BorderThickness="3"
                                      CornerRadius="5"
                                      Width="100" Height="35"
                                      HorizontalAlignment="Left"
-                                     Margin="20, 2, 2, 2">
-                                 <Button Content="Радар" FontSize="15" Padding="0"
+                                     Margin="45, 2, 2, 2">
+                                 <Button Content="Радар" FontSize="15" Padding="-1" Classes="Btn"
                                          Background="{DynamicResource ButtonBackground}"
                                          Foreground="{DynamicResource ButtonForeground}"
                                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                          VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{Binding !RadarUsed}"
                                          Command="{Binding RadarPingCommand}"/>
                              </Border>
-                             <Border Margin="2, 2, 20, 2" Width="100" Height="35"
+                             <Border Margin="2, 2, 45, 2" Width="100" Height="35"
                                      HorizontalAlignment="Right"
                                      BorderBrush="Black"
                                      BorderThickness="3"
@@ -62,16 +69,18 @@
                                             VerticalAlignment="Center"/>
                              </Border>
                          </Grid>
-                         <Grid Grid.Row="1"  Height="300" Width="300" VerticalAlignment="Center">
+                         <Grid Grid.Row="1" VerticalAlignment="Center">
                             <Viewbox Stretch="Uniform">
-                                <Border CornerRadius="5" BorderBrush="Black" BorderThickness="5">
+                                <Border CornerRadius="6" BorderBrush="Black" BorderThickness="5">
                                     <ItemsControl Name="ItemsControl" Background="DarkSlateGray" ItemsSource="{Binding Cells}" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <UniformGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                                <UniformGrid HorizontalAlignment="Stretch"
+                                                             VerticalAlignment="Stretch" 
+                                                             Rows="{Binding Height}"
+                                                             Columns="{Binding Width}"/>
                                             </ItemsPanelTemplate> 
                                         </ItemsControl.ItemsPanel>
-                                        
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <Button Command="{Binding #ItemsControl.((vm:GameBoardViewModel)DataContext).OpenCellCommand}"
@@ -115,13 +124,11 @@
                                             Height="200" Width="200"
                                             Background="#c2606060"
                                             IsVisible="{Binding Lose}">
-                                            <Grid>
-                                                    <TextBlock Foreground="White"
-                                                               Text="You Lose"
-                                                               VerticalAlignment="Center"
-                                                               HorizontalAlignment="Center"
-                                                               FontSize="30"/>
-                                            </Grid>
+                                        <TextBlock Foreground="White"
+                                                   Text="You Lose"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   FontSize="30"/>
                                     </Border>
                             </Viewbox>
                             <Viewbox Stretch="Uniform">
@@ -139,13 +146,13 @@
                                 </Border>
                             </Viewbox>
                          </Grid>
-                         <Grid Grid.Row="2" ColumnDefinitions="*, *">
-                             <Button Grid.Column="0" Content="Меню" FontSize="15"
+                         <Grid Grid.Row="2" ColumnDefinitions="*, *" Margin="0, 5, 0, 5">
+                             <Button Grid.Column="0" Content="Меню" FontSize="15" Classes="Btn"
                                      Background="{DynamicResource ButtonBackground}"
                                      Foreground="{DynamicResource ButtonForeground}"
                                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                      HorizontalAlignment="Right" Width="100" Height="33" Margin="2" Command="{Binding GoBack}"/> 
-                             <Button Grid.Column="1" Content="Заново" FontSize="15"
+                             <Button Grid.Column="1" Content="Заново" FontSize="15" Classes="Btn"
                                      Background="{DynamicResource ButtonBackground}"
                                      Foreground="{DynamicResource ButtonForeground}"
                                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"

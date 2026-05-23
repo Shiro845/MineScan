@@ -58,13 +58,21 @@
         <Style Selector="RadioButton.DifficultyBlock:pointerover">
             <Setter Property="RenderTransform" Value="scale(1.05)" />
         </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
+        </Style>
     </UserControl.Styles>
     <Grid Background="{DynamicResource MainBackground}">
                  <Viewbox Stretch="Uniform">
                      <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
-                         <Border CornerRadius="10" Height="250" Background="#aa808080">
+                         <Border CornerRadius="10" Height="250" Background="#60606060">
                              <Grid Height="200" VerticalAlignment="Center" RowDefinitions="*, 4*, *">
-                                 <TextBlock Grid.Row="0" Text="Оберіть рівень складності" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                                 <TextBlock Grid.Row="0" Text="Оберіть рівень складності"
+                                            Foreground="{DynamicResource TextBlockForeground}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="20"/>
                                  <Grid Grid.Row="1" ColumnDefinitions="*, *, *">
                                      <Border Grid.Column="0" Classes="Difficulty" BorderBrush="Black" CornerRadius="5" BorderThickness="3" Margin="5">
                                          <RadioButton Classes="DifficultyBlock Easy"
@@ -79,7 +87,7 @@
                                                                            Opacity="0.5" />
                                                      </TextBlock.Effect>
                                                  </TextBlock>
-                                                 <TextBlock Grid.Row="1" Text="Mines: 20; Size: 9x9" FontWeight="Black" VerticalAlignment="Bottom" FontSize="8"/>
+                                                 <TextBlock Grid.Row="1" Text="Mines: 10; Size: 9x9" FontWeight="Black" VerticalAlignment="Bottom" FontSize="8"/>
                                              </Grid>
                                          </RadioButton>
                                      </Border>
@@ -96,7 +104,7 @@
                                                                            Opacity="0.5" />
                                                      </TextBlock.Effect>
                                                  </TextBlock>
-                                                 <TextBlock Grid.Row="1" Text="Mines: 30; Size: 15x15" FontWeight="Black" VerticalAlignment="Bottom" FontSize="8"/>
+                                                 <TextBlock Grid.Row="1" Text="Mines: 40; Size: 16x16" FontWeight="Black" VerticalAlignment="Bottom" FontSize="8"/>
                                              </Grid>
                                          </RadioButton>
                                      </Border>
@@ -113,7 +121,7 @@
                                                                            Opacity="0.5" />
                                                      </TextBlock.Effect>
                                                  </TextBlock>
-                                                 <TextBlock Grid.Row="1" Text="Mines: 60; Size: 20x20" FontWeight="Black" VerticalAlignment="Bottom" FontSize="8"/>
+                                                 <TextBlock Grid.Row="1" Text="Mines: 120; Size: 30x20" FontWeight="Black" VerticalAlignment="Bottom" FontSize="8"/>
                                              </Grid>
                                          </RadioButton>
                                      </Border>

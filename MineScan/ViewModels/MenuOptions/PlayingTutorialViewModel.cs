@@ -1,6 +1,4 @@
-﻿using MineScan.Models;
-
-namespace MineScan.ViewModels;
+﻿namespace MineScan.ViewModels;
 
 public class PlayingTutorialViewModel : ViewModelBase
 {

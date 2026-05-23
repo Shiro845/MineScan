@@ -10,23 +10,27 @@
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Stretch"/>
             <Setter Property="CornerRadius" Value="10"/>
-            <Setter Property="Background" Value="#303050"/>
-            <Setter Property="Foreground" Value="GhostWhite"/>
+            <Setter Property="Background" Value="{DynamicResource ButtonBackground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}"/>
             <Setter Property="Margin" Value="5"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="20"/>
         </Style>
         <Style Selector="Button:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#404060"/>
-            <Setter Property="Foreground" Value="GhostWhite"/>
+            <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
         </Style>
     </UserControl.Styles>
                  <Grid Background="{DynamicResource MainBackground}">
                      <Viewbox Stretch="Uniform">
                          <Grid Height="800" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center">
                              <Grid RowDefinitions="*, *, *, *, *, *, *" Height="500" Width="375" VerticalAlignment="Center">
-                                 <TextBlock Grid.Row="0" Text="MineScan" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                 <TextBlock Grid.Row="0" Foreground="{DynamicResource TextBlockForeground}"
+                                            Text="MineScan" FontSize="50"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontWeight="Heavy"/>
                                  <Button Grid.Row="1" Command="{Binding OpenPlay}" Content="Грати"/>
                                  <Button Grid.Row="2" Command="{Binding OpenStats}" Content="Статистика"/>
                                  <Button Grid.Row="3" Command="{Binding OpenThemes}" Content="Теми"/>
