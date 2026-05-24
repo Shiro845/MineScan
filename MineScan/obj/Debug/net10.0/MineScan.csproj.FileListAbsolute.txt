@@ -100,3 +100,4 @@ C:\Users\Admin\RiderProjects\MineScan\MineScan\obj\Debug\net10.0\MineScan.genrun
 C:\Users\Admin\RiderProjects\MineScan\MineScan\obj\Debug\net10.0\ref\MineScan.dll
 C:\Users\Admin\RiderProjects\MineScan\MineScan\bin\Debug\net10.0\Material.Icons.dll
 C:\Users\Admin\RiderProjects\MineScan\MineScan\bin\Debug\net10.0\Material.Icons.Avalonia.dll
+C:\Users\Admin\RiderProjects\MineScan\MineScan\bin\Debug\net10.0\NetCoreAudio.dll

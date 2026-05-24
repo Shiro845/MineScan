@@ -3,5 +3,5 @@
     <SolidColorBrush x:Key="MainBackground">#ffc0cb</SolidColorBrush>
     <SolidColorBrush x:Key="ButtonBackground">#ff69b0</SolidColorBrush>
     <SolidColorBrush x:Key="ButtonForeground">#ffffff</SolidColorBrush>
-    <SolidColorBrush x:Key="TextBlockForeground">#cc7cac</SolidColorBrush>
+    <SolidColorBrush x:Key="TextBlockForeground">#ff1493</SolidColorBrush>
 </ResourceDictionary>

@@ -48,7 +48,7 @@
                              <Border BorderBrush="Black"
                                      BorderThickness="3"
                                      CornerRadius="5"
-                                     Width="100" Height="35"
+                                     Width="95" Height="35"
                                      HorizontalAlignment="Left"
                                      Margin="45, 2, 2, 2">
                                  <Button Content="Радар" FontSize="15" Padding="-1" Classes="Btn"
@@ -58,13 +58,15 @@
                                          VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{Binding !RadarUsed}"
                                          Command="{Binding RadarPingCommand}"/>
                              </Border>
-                             <Border Margin="2, 2, 45, 2" Width="100" Height="35"
+                             <Border Margin="2, 2, 45, 2" Width="95" Height="35"
                                      HorizontalAlignment="Right"
                                      BorderBrush="Black"
                                      BorderThickness="3"
                                      CornerRadius="5"
                                      Background="#60606060">
-                                 <TextBlock FontSize="15" Text="{Binding TimerText}"
+                                 <TextBlock FontSize="15"
+                                            Foreground="{DynamicResource TextBlockForeground}"
+                                            Text="{Binding TimerText}"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"/>
                              </Border>
@@ -72,7 +74,7 @@
                          <Grid Grid.Row="1" VerticalAlignment="Center">
                             <Viewbox Stretch="Uniform">
                                 <Border CornerRadius="6" BorderBrush="Black" BorderThickness="5">
-                                    <ItemsControl Name="ItemsControl" Background="DarkSlateGray" ItemsSource="{Binding Cells}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ItemsControl Name="ItemsControl" MinHeight="190" MinWidth="190" Background="DarkSlateGray" ItemsSource="{Binding Cells}" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <UniformGrid HorizontalAlignment="Stretch"
@@ -119,32 +121,26 @@
                                     </ItemsControl>
                                 </Border>
                             </Viewbox>
-                            <Viewbox Stretch="Uniform">
-                                    <Border CornerRadius="5"
-                                            Height="200" Width="200"
-                                            Background="#c2606060"
-                                            IsVisible="{Binding Lose}">
-                                        <TextBlock Foreground="White"
-                                                   Text="You Lose"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
-                                                   FontSize="30"/>
-                                    </Border>
-                            </Viewbox>
-                            <Viewbox Stretch="Uniform">
-                                <Border CornerRadius="5" 
-                                        Height="200" Width="200"
-                                        Background="#c2606060"
-                                        IsVisible="{Binding Win}">
-                                    <Grid>
-                                        <TextBlock Foreground="White"
-                                                   Text="You Win"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
-                                                   FontSize="30"/>
-                                    </Grid>
-                                </Border>
-                            </Viewbox>
+                            <Border Height="{Binding #ItemsControl.Bounds.Height}"
+                                    Width="{Binding #ItemsControl.Bounds.Width}"
+                                    Background="#c2606060"
+                                    IsVisible="{Binding Lose}">
+                                    <TextBlock Foreground="{DynamicResource TextBlockForeground}"
+                                               Text="You Lose"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               FontSize="50"/>
+                            </Border>
+                            <Border Height="{Binding #ItemsControl.Bounds.Height}"
+                                    Width="{Binding #ItemsControl.Bounds.Width}"
+                                    Background="#c2606060"
+                                    IsVisible="{Binding Win}">
+                                    <TextBlock Foreground="{DynamicResource TextBlockForeground}"
+                                               Text="You Win"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               FontSize="50"/>
+                            </Border>
                          </Grid>
                          <Grid Grid.Row="2" ColumnDefinitions="*, *" Margin="0, 5, 0, 5">
                              <Button Grid.Column="0" Content="Меню" FontSize="15" Classes="Btn"

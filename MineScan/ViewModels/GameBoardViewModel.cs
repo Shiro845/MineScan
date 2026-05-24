@@ -91,7 +91,7 @@ public class GameBoardViewModel : ViewModelBase
 
     public sbyte Width { get; set; }
     public sbyte Height { get; set; }
-    public sbyte Mines { get; set; }
+    public sbyte Mines { get; }
     
     public GameBoardViewModel()
     {
@@ -144,7 +144,6 @@ public class GameBoardViewModel : ViewModelBase
                 if (MineField.IsExploded)
                 {
                     StopTimer();
-                    currentStats.GamesPlayed++;
                     currentStats.GamesPlayed++;
                     Lose = true;
                 }
