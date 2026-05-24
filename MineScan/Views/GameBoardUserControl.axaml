@@ -31,9 +31,13 @@
                     <Setter Property="Background" Value="Orange"/>
                 </Style>
                 <Style Selector="Button.Cell.RadarHighlight">
-                    <Setter Property="Background" Value="Aqua"/>
+                    <Setter Property="Background" Value="DarkRed"/>
                 </Style>
                 <Style Selector="Button.Btn:pointerover /template/ ContentPresenter">
+                    <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
+                </Style>
+                <Style Selector="Button.IsRadarTargeting">
                     <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
                     <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
                 </Style>
@@ -51,9 +55,9 @@
                                      Width="95" Height="35"
                                      HorizontalAlignment="Left"
                                      Margin="45, 2, 2, 2">
-                                 <Button Content="Радар" FontSize="15" Padding="-1" Classes="Btn"
-                                         Background="{DynamicResource ButtonBackground}"
-                                         Foreground="{DynamicResource ButtonForeground}"
+                                 <Button Content="Радар" FontSize="15" Padding="-1"
+                                         Classes="Btn"
+                                         Classes.IsRadarTargeting="{Binding IsRadarTargeting}"
                                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                          VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{Binding !RadarUsed}"
                                          Command="{Binding RadarPingCommand}"/>

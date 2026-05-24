@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Media;
-using MineScan.Models;
 
 namespace MineScan.ViewModels;
 
@@ -19,6 +19,20 @@ public class SettingsViewModel : ViewModelBase
         }
     }
 
+    public bool IsFullscreen
+    {
+        get => (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) 
+               && desktop.MainWindow?.WindowState == WindowState.FullScreen;
+        set
+        {
+            OnPropertyChanged(nameof(IsFullscreen));
+            if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime { MainWindow: not null } desktop)
+            {
+                desktop.MainWindow.WindowState = value ? WindowState.FullScreen : WindowState.Normal;
+            }
+        }
+    }
+    
     private void ApplyFont(bool useMinecraft)
     {
         if (Application.Current == null) return;

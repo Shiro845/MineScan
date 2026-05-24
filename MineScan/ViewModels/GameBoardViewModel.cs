@@ -47,6 +47,15 @@ public class GameBoardViewModel : ViewModelBase
             OnPropertyChanged(nameof(Lose));
         }
     }
+    public bool IsRadarTargeting
+    {
+        get => field;
+        set
+        {
+            field = value;
+            OnPropertyChanged(nameof(IsRadarTargeting));
+        }
+    }
     public bool RadarUsed
     {
         get;
@@ -79,7 +88,7 @@ public class GameBoardViewModel : ViewModelBase
             Interval = TimeSpan.FromSeconds(1)
         };
     
-        _timer.Tick += (sender, _) => SecondsPassed++;
+        _timer.Tick += (_, _) => SecondsPassed++;
         _timer.Start();
     }
 
@@ -91,15 +100,12 @@ public class GameBoardViewModel : ViewModelBase
 
     public sbyte Width { get; set; }
     public sbyte Height { get; set; }
-    public sbyte Mines { get; }
+    private sbyte Mines { get; }
     
     public GameBoardViewModel()
     {
         var difficulty = SelectedDifficulty.Instance.ActualDifficulty;
         var currentStats = SelectedDifficulty.Instance.GetCurrentStats();
-        Win = false;
-        Lose = false;
-        RadarUsed = false;
         
         switch (difficulty)
         {
@@ -132,6 +138,12 @@ public class GameBoardViewModel : ViewModelBase
         {
             if (cell != null)
             {
+                if (IsRadarTargeting)
+                {
+                    ExecuteRadarAt(cell);
+                    return;
+                }
+                
                 if (cell.IsOpen) { MineField.Chording(cell.X, cell.Y); }
 
                 if (!MineField.IsMinesSpawned)
@@ -140,7 +152,7 @@ public class GameBoardViewModel : ViewModelBase
                     StartTimer();
                 }
                 MineField.OpenCell(cell.X, cell.Y);
-
+                
                 if (MineField.IsExploded)
                 {
                     StopTimer();
@@ -173,24 +185,44 @@ public class GameBoardViewModel : ViewModelBase
 
     private void UseRadarPing()
     {
-        if (Lose || Win) return;
-        
-        RadarUsed = true;
-        
-        var hiddenMines = Cells.Where(cell => cell is { IsMine: true, IsFlagged: false, IsOpen: false }).ToList();
+        if (Lose || Win || RadarUsed) return;
+
+        IsRadarTargeting = !IsRadarTargeting;
+    }
     
-        if (hiddenMines.Any())
+    private void ExecuteRadarAt(Cell centerCell)
+    {
+        if (!IsRadarTargeting || RadarUsed) return;
+
+        IsRadarTargeting = false;
+        RadarUsed = true;
+
+        var targetX = centerCell.X;
+        var targetY = centerCell.Y;
+
+        var minesInRadius = Cells.Where(cell => 
+            Math.Abs(cell.X - targetX) <= 1 && 
+            Math.Abs(cell.Y - targetY) <= 1 && 
+            cell.IsMine &&
+            !cell.IsFlagged &&
+            !cell.IsOpen).ToList();
+
+        if (minesInRadius.Any())
         {
-            var randomMine = hiddenMines[Random.Shared.Next(hiddenMines.Count)];
-        
-            randomMine.IsRadarScanning = true;
-        
+            foreach (var mine in minesInRadius)
+            {
+                mine.IsRadarScanning = true;
+            }
+
             Task.Run(async () =>
             {
                 await Task.Delay(1000);
                 Dispatcher.UIThread.Post(() =>
                 {
-                    randomMine.IsRadarScanning = false;
+                    foreach (var mine in minesInRadius)
+                    {
+                        mine.IsRadarScanning = false;
+                    }
                 });
             });
         }

@@ -1,6 +1,6 @@
 ﻿using MineScan.Models;
 
-namespace MineScan.ViewModels;
+namespace MineScan.ViewModels.MenuOptions;
 
 public class StatisticsViewModel : ViewModelBase
 {

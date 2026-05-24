@@ -18,11 +18,11 @@
                 <views:MainMenuUserControl />
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:DifficultySelectionViewModel}">
+            <DataTemplate DataType="{x:Type vm1:DifficultySelectionViewModel}">
                 <menuOptions:DifficultySelectionUserControl />
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:StatisticsViewModel}">
+            <DataTemplate DataType="{x:Type vm1:StatisticsViewModel}">
                 <menuOptions:StatisticsUserControl />
             </DataTemplate>
             
@@ -34,7 +34,7 @@
                 <menuOptions:SettingsUserControl/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:PlayingTutorialViewModel}">
+            <DataTemplate DataType="{x:Type vm1:PlayingTutorialViewModel}">
                 <menuOptions:PlayingTutorialUserControl/>
             </DataTemplate>
             
@@ -46,7 +46,7 @@
                 <views:GameBoardUserControl/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:StatisticsViewModel}">
+            <DataTemplate DataType="{x:Type vm1:StatisticsViewModel}">
                 <menuOptions:StatisticsUserControl/>
             </DataTemplate>
         </Window.DataTemplates>

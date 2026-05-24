@@ -3,7 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:MineScan.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="vm:DifficultySelectionViewModel"
+             xmlns:menuOptions="clr-namespace:MineScan.ViewModels.MenuOptions"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="menuOptions:DifficultySelectionViewModel"
              x:Class="MineScan.Views.MenuOptions.DifficultySelectionUserControl">
     <UserControl.Styles>
         <Style Selector="RadioButton.DifficultyBlock">

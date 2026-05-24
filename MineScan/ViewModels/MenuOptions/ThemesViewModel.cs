@@ -1,6 +1,5 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
-using MineScan.Models;
 
 namespace MineScan.ViewModels.MenuOptions;
 

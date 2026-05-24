@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO.Compression;
-using System.Runtime.CompilerServices;
 
 namespace MineScan.Models;
 
@@ -10,7 +7,7 @@ public class MineField
 {
     private Cell[,] _field;
 
-    public bool IsMinesSpawned { get; private set; } = false;
+    public bool IsMinesSpawned { get; private set; }
     public bool IsExploded { private set; get; }
     public bool IsWon { private set; get; }
     public bool IsGameOver => IsExploded || IsWon;
@@ -89,7 +86,6 @@ public class MineField
     public sbyte FlagsAroundCell(int x, int y)
     {
         sbyte flagsCount = 0;
-        Cell cell = _field[x, y];
         
         for (int i = x-1; i <= x+1; i++)
         {
@@ -162,6 +158,7 @@ public class MineField
     }
     public void ToggleFlag(int x, int y)
     {
+        if (!IsMinesSpawned) return;
         if (!_field[x, y].IsOpen)
         {
             _field[x, y].IsFlagged = !_field[x, y].IsFlagged;
