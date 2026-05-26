@@ -69,7 +69,7 @@
                      <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
                          <Border CornerRadius="10" Height="250" Background="#60606060">
                              <Grid Height="200" VerticalAlignment="Center" RowDefinitions="*, 4*, *">
-                                 <TextBlock Grid.Row="0" Text="Оберіть рівень складності"
+                                 <TextBlock Grid.Row="0" Text="{DynamicResource ChooseDifficulty}"
                                             Foreground="{DynamicResource TextBlockForeground}"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
@@ -79,7 +79,7 @@
                                          <RadioButton Classes="DifficultyBlock Easy"
                                                       IsChecked="{Binding IsEasyChecked}">
                                              <Grid RowDefinitions="*, *">
-                                                 <TextBlock Grid.Row="0" Text="Easy" FontWeight="Black" Foreground="LimeGreen" FontSize="20" HorizontalAlignment="Center">
+                                                 <TextBlock Grid.Row="0" Text="{DynamicResource Easy}" FontWeight="Black" Foreground="LimeGreen" FontSize="20" HorizontalAlignment="Center">
                                                      <TextBlock.Effect>
                                                          <DropShadowEffect Color="Black" 
                                                                            BlurRadius="0" 
@@ -96,7 +96,7 @@
                                          <RadioButton Classes="DifficultyBlock Medium"
                                                       IsChecked="{Binding IsMediumChecked}">
                                              <Grid RowDefinitions="*, *">
-                                                 <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Medium" FontWeight="Black" Foreground="Orange"  FontSize="20">
+                                                 <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="{DynamicResource Medium}" FontWeight="Black" Foreground="Orange"  FontSize="20">
                                                      <TextBlock.Effect>
                                                          <DropShadowEffect Color="Black" 
                                                                            BlurRadius="0" 
@@ -113,7 +113,7 @@
                                          <RadioButton Classes="DifficultyBlock Hard"
                                                       IsChecked="{Binding IsHardChecked}">
                                              <Grid RowDefinitions="*, *">
-                                                 <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Hard" FontWeight="Black" Foreground="Red"  FontSize="20">
+                                                 <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="{DynamicResource Hard}" FontWeight="Black" Foreground="Red"  FontSize="20">
                                                      <TextBlock.Effect>
                                                          <DropShadowEffect Color="Black" 
                                                                            BlurRadius="0" 
@@ -128,12 +128,12 @@
                                      </Border>
                                  </Grid>
                                  <Grid Grid.Row="2" ColumnDefinitions="*, *" Height="40">
-                                     <Button Grid.Column="0" Content="Назад"
+                                     <Button Grid.Column="0" Content="{DynamicResource Back}"
                                              Background="{DynamicResource ButtonBackground}"
                                              Foreground="{DynamicResource ButtonForeground}"
                                              FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                              HorizontalAlignment="Right" Width="130" Height="33" Margin="2" Command="{Binding GoBack}"/> 
-                                     <Button Grid.Column="1" Content="Почати гру"
+                                     <Button Grid.Column="1" Content="{DynamicResource StartGame}"
                                              Background="{DynamicResource ButtonBackground}"
                                              Foreground="{DynamicResource ButtonForeground}"
                                              FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"

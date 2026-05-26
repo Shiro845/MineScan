@@ -16,7 +16,7 @@
                  <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
                      <Border CornerRadius="10" Height="350" Background="#60606060">
                          <Grid VerticalAlignment="Center" RowDefinitions="50, 200, 50">
-                             <TextBlock Grid.Row="0" Text="Теми"
+                             <TextBlock Grid.Row="0" Text="{DynamicResource Themes}"
                                         Foreground="{DynamicResource TextBlockForeground}"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Bottom"
@@ -28,26 +28,26 @@
                                              HorizontalAlignment="Center" 
                                              Spacing="15">
                  
-                                     <Button Content="Світла тема" 
+                                     <Button Content="{DynamicResource LightTheme}"
                                              Width="200" HorizontalContentAlignment="Center"
                                              Command="{Binding SetLightTheme}"/>
                  
-                                     <Button Content="Темна тема" 
+                                     <Button Content="{DynamicResource DarkTheme}"
                                              Width="200" HorizontalContentAlignment="Center"
                                              Command="{Binding SetDarkTheme}"/>
                  
-                                     <Button Content="Неонова тема" 
+                                     <Button Content="{DynamicResource NeonTheme}"
                                              Width="200" HorizontalContentAlignment="Center"
                                              Command="{Binding SetNeonTheme}"/>
                  
-                                     <Button Content="Рожева тема" 
+                                     <Button Content="{DynamicResource PinkTheme}"
                                              Width="200" HorizontalContentAlignment="Center"
                                              Command="{Binding SetPinkTheme}"/>
                  
                                  </StackPanel>
                              </Grid>
                              <Grid Grid.Row="2" Height="40">
-                                 <Button Content="Назад"
+                                 <Button Content="{DynamicResource Back}"
                                          Background="{DynamicResource ButtonBackground}"
                                          Foreground="{DynamicResource ButtonForeground}"
                                          FontSize="15"

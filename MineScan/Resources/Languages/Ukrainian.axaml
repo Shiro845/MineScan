@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <!-- MainMenu -->
+    <system:String x:Key="Play">Грати</system:String>
+    <system:String x:Key="Statistics">Статистика</system:String>
+    <system:String x:Key="Themes">Теми</system:String>
+    <system:String x:Key="Settings">Налаштування</system:String>
+    <system:String x:Key="HowToPlay">Як грати?</system:String>
+    <system:String x:Key="Exit">Вихід</system:String>
+    <!-- DifficultySelection -->
+    <system:String x:Key="ChooseDifficulty">Виберіть складність</system:String>
+    <system:String x:Key="Easy">Легка</system:String>
+    <system:String x:Key="Medium">Середня</system:String>
+    <system:String x:Key="Hard">Важка</system:String>
+    <system:String x:Key="StartGame">Почати гру</system:String>
+    <!-- Statistics -->
+    <system:String x:Key="GamesCount">Кількість ігор:</system:String>
+    <system:String x:Key="Winrate">Відсоток перемог:</system:String>
+    <system:String x:Key="BestTime">Найкращий час:</system:String>
+    <!-- Themes -->
+    <system:String x:Key="LightTheme">Світла Тема</system:String>
+    <system:String x:Key="DarkTheme">Темна Тема</system:String>
+    <system:String x:Key="NeonTheme">Неонова Тема</system:String>
+    <system:String x:Key="PinkTheme">Рожева Тема</system:String>
+    <!-- Settings -->
+    <system:String x:Key="TextMinecraftFont">Майнкрафт Шрифт</system:String>
+    <system:String x:Key="Fullscreen">Повний Екран</system:String>
+    <system:String x:Key="WithoutRadar">Без Радару</system:String>
+    <system:String x:Key="Language">Мова:</system:String>
+    <!-- Exit -->
+    <system:String x:Key="YouWantLeave?">Ви справді хочете вийти?</system:String>
+    <system:String x:Key="No">Ні</system:String>
+    <system:String x:Key="Yes">Так</system:String>
+    <!-- GameBoard -->
+    <system:String x:Key="Radar">Радар</system:String>
+    <system:String x:Key="YouLose">Ти Програв</system:String>
+    <system:String x:Key="YouWin">Ти Вийграв</system:String>
+    <system:String x:Key="Menu">Меню</system:String>
+    <system:String x:Key="Restart">Знову</system:String>
+    <!-- Another -->
+    <system:String x:Key="Back">Назад</system:String>
+</ResourceDictionary>

@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <!-- MainMenu -->
+    <system:String x:Key="Play">Play</system:String>
+    <system:String x:Key="Statistics">Statistics</system:String>
+    <system:String x:Key="Themes">Themes</system:String>
+    <system:String x:Key="Settings">Settings</system:String>
+    <system:String x:Key="HowToPlay">How To Play?</system:String>
+    <system:String x:Key="Exit">Exit</system:String>
+    <!-- DifficultySelection -->
+    <system:String x:Key="ChooseDifficulty">Choose Difficulty</system:String>
+    <system:String x:Key="Easy">Easy</system:String>
+    <system:String x:Key="Medium">Medium</system:String>
+    <system:String x:Key="Hard">Hard</system:String>
+    <system:String x:Key="StartGame">Start Game</system:String>
+    <!-- Statistics -->
+    <system:String x:Key="GamesCount">Games Count:</system:String>
+    <system:String x:Key="Winrate">Winrate:</system:String>
+    <system:String x:Key="BestTime">Best Time:</system:String>
+    <!-- Themes -->
+    <system:String x:Key="LightTheme">Light Theme</system:String>
+    <system:String x:Key="DarkTheme">Dark Theme</system:String>
+    <system:String x:Key="NeonTheme">Neon Theme</system:String>
+    <system:String x:Key="PinkTheme">Pink Theme</system:String>
+    <!-- Settings -->
+    <system:String x:Key="TextMinecraftFont">Minecraft Font</system:String>
+    <system:String x:Key="Fullscreen">Fullscreen</system:String>
+    <system:String x:Key="WithoutRadar">Without Radar</system:String>
+    <system:String x:Key="Language">Language:</system:String>
+    <!-- Exit -->
+    <system:String x:Key="YouWantLeave?">Do you really want to leave?</system:String>
+    <system:String x:Key="No">No</system:String>
+    <system:String x:Key="Yes">Yes</system:String>
+    <!-- GameBoard -->
+    <system:String x:Key="Radar">Radar</system:String>
+    <system:String x:Key="YouLose">You Lose</system:String>
+    <system:String x:Key="YouWin">You Win</system:String>
+    <system:String x:Key="Menu">Menu</system:String>
+    <system:String x:Key="Restart">Restart</system:String>
+    <!-- Another -->
+    <system:String x:Key="Back">Back</system:String>
+</ResourceDictionary>

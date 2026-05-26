@@ -30,7 +30,7 @@
                 <menuOptions:ThemesUserControl/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+            <DataTemplate DataType="{x:Type vm1:SettingsViewModel}">
                 <menuOptions:SettingsUserControl/>
             </DataTemplate>
             

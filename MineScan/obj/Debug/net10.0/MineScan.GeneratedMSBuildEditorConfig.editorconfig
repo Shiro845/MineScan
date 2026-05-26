@@ -31,6 +31,12 @@ build_property.EnableCodeStyleSeverity =
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Resources/Languages/English.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Resources/Languages/Ukrainian.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/Resources/Themes/DarkTheme.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

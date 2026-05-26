@@ -49,13 +49,14 @@
                            RowDefinitions="Auto, Auto, Auto"
                            MinWidth="290">
                          <Grid Grid.Row="0">
-                             <Border BorderBrush="Black"
+                             <Border IsVisible="{Binding !IsRadarDisabled}"
+                                     BorderBrush="Black"
                                      BorderThickness="3"
                                      CornerRadius="5"
                                      Width="95" Height="35"
                                      HorizontalAlignment="Left"
                                      Margin="45, 2, 2, 2">
-                                 <Button Content="Радар" FontSize="15" Padding="-1"
+                                 <Button Content="{DynamicResource Radar}" FontSize="15" Padding="-1"
                                          Classes="Btn"
                                          Classes.IsRadarTargeting="{Binding IsRadarTargeting}"
                                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
@@ -129,30 +130,34 @@
                                     Width="{Binding #ItemsControl.Bounds.Width}"
                                     Background="#c2606060"
                                     IsVisible="{Binding Lose}">
-                                    <TextBlock Foreground="{DynamicResource TextBlockForeground}"
-                                               Text="You Lose"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Center"
-                                               FontSize="50"/>
+                                    <Viewbox Stretch="Uniform">
+                                        <TextBlock Foreground="{DynamicResource TextBlockForeground}"
+                                                   Text="{DynamicResource YouLose}"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   Margin="10"/>
+                                    </Viewbox>
                             </Border>
                             <Border Height="{Binding #ItemsControl.Bounds.Height}"
                                     Width="{Binding #ItemsControl.Bounds.Width}"
                                     Background="#c2606060"
                                     IsVisible="{Binding Win}">
-                                    <TextBlock Foreground="{DynamicResource TextBlockForeground}"
-                                               Text="You Win"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Center"
-                                               FontSize="50"/>
+                                    <Viewbox Stretch="Uniform">
+                                        <TextBlock Foreground="{DynamicResource TextBlockForeground}"
+                                                   Text="{DynamicResource YouWin}"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Stretch"
+                                                   Margin="10"/>
+                                    </Viewbox>
                             </Border>
                          </Grid>
                          <Grid Grid.Row="2" ColumnDefinitions="*, *" Margin="0, 5, 0, 5">
-                             <Button Grid.Column="0" Content="Меню" FontSize="15" Classes="Btn"
+                             <Button Grid.Column="0" Content="{DynamicResource Menu}" FontSize="15" Classes="Btn"
                                      Background="{DynamicResource ButtonBackground}"
                                      Foreground="{DynamicResource ButtonForeground}"
                                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                      HorizontalAlignment="Right" Width="100" Height="33" Margin="2" Command="{Binding GoBack}"/> 
-                             <Button Grid.Column="1" Content="Заново" FontSize="15" Classes="Btn"
+                             <Button Grid.Column="1" Content="{DynamicResource Restart}" FontSize="15" Classes="Btn"
                                      Background="{DynamicResource ButtonBackground}"
                                      Foreground="{DynamicResource ButtonForeground}"
                                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"

@@ -13,7 +13,7 @@ public class GameBoardViewModel : ViewModelBase
 {
     public void GoBack() => NavigationService.Instance.NavigateTo<MainMenuViewModel>();
     public void Restart() => NavigationService.Instance.NavigateTo<GameBoardViewModel>();
-    
+
     public ICommand OpenCellCommand { get; set; }
     public ICommand FlagCellCommand { get; set; }
     public ICommand RadarPingCommand { get; set; }
@@ -38,6 +38,7 @@ public class GameBoardViewModel : ViewModelBase
             OnPropertyChanged(nameof(Win));
         }
     }
+
     public bool Lose
     {
         get;
@@ -47,6 +48,7 @@ public class GameBoardViewModel : ViewModelBase
             OnPropertyChanged(nameof(Lose));
         }
     }
+
     public bool IsRadarTargeting
     {
         get => field;
@@ -56,6 +58,7 @@ public class GameBoardViewModel : ViewModelBase
             OnPropertyChanged(nameof(IsRadarTargeting));
         }
     }
+
     public bool RadarUsed
     {
         get;
@@ -65,8 +68,18 @@ public class GameBoardViewModel : ViewModelBase
             OnPropertyChanged(nameof(RadarUsed));
         }
     }
-    
-    private DispatcherTimer? _timer;
+
+    public bool IsRadarDisabled
+    {
+        get => AppSettings.Instance.IsRadarDisabled;
+        set
+        {
+            AppSettings.Instance.IsRadarDisabled = value;
+            OnPropertyChanged(nameof(IsRadarDisabled));
+        }
+    }
+
+private DispatcherTimer? _timer;
 
     public int SecondsPassed
     {

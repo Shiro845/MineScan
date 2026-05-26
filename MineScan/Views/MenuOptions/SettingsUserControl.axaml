@@ -3,35 +3,56 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:vm="using:MineScan.ViewModels"
-             x:Class="MineScan.Views.MenuOptions.SettingsUserControl" x:DataType="vm:SettingsViewModel"
+             xmlns:menuOptions="clr-namespace:MineScan.ViewModels.MenuOptions"
+             x:Class="MineScan.Views.MenuOptions.SettingsUserControl" x:DataType="menuOptions:SettingsViewModel"
              Background="{DynamicResource MainBackground}">
              <UserControl.Styles>
                  <Style Selector="Button:pointerover /template/ ContentPresenter">
                      <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
                      <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
                  </Style>
+                 <Style Selector="CheckBox">
+                     <Setter Property="Foreground" Value="{DynamicResource TextBlockForeground}"/>
+                 </Style>
+                 <Style Selector="CheckBox:checked /template/ Path#CheckGlyph">
+                     <Setter Property="Fill" Value="{DynamicResource TextBlockForeground}"/>
+                 </Style>
+                 <Style Selector="CheckBox:checked /template/ Border#NormalRectangle">
+                     <Setter Property="Background" Value="{DynamicResource ButtonBackground}"/>
+                     <Setter Property="BorderBrush" Value="{DynamicResource ButtonBackground}"/>
+                 </Style>
              </UserControl.Styles>
              <Viewbox Stretch="Uniform">
                  <Grid Width="350" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
                      <Border CornerRadius="10" Height="250" Background="#60606060">
                          <Grid VerticalAlignment="Center" RowDefinitions="50, 150, 50">
-                             <TextBlock Grid.Row="0" Text="Налаштування"
+                             <TextBlock Grid.Row="0" Text="{DynamicResource Settings}"
                                         Foreground="{DynamicResource TextBlockForeground}"
                                         HorizontalAlignment="Center" VerticalAlignment="Bottom"
                                         Margin="5" FontSize="20"/>
                              <Grid Grid.Row="1">
-                                 <StackPanel Orientation="Vertical">
-                                     <CheckBox Margin="5" Content="Minecraft Font" 
-                                     IsChecked="{Binding IsMinecraftFont, Mode=TwoWay}"/>
-                                     <CheckBox Margin="5" Content="Fullscreen"
-                                               IsChecked="{Binding IsFullscreen, Mode=TwoWay}"/>
-                                     <CheckBox Margin="5" Content="Without Radar"
-                                               IsChecked="{Binding IsFullscreen, Mode=TwoWay}"/>
-                                 </StackPanel>
+                                 <Grid ColumnDefinitions="*, *">
+                                     <StackPanel Grid.Column="0" Orientation="Vertical">
+                                         <CheckBox Margin="5" Content="{DynamicResource TextMinecraftFont}" 
+                                                   IsChecked="{Binding IsMinecraftFont, Mode=TwoWay}"/>
+                                         <CheckBox Margin="5" Content="{DynamicResource Fullscreen}"
+                                                   IsChecked="{Binding IsFullscreen, Mode=TwoWay}"/>
+                                         <CheckBox Margin="5" Content="{DynamicResource WithoutRadar}"
+                                                   IsChecked="{Binding IsRadarDisabled, Mode=TwoWay}"/>
+                                     </StackPanel>
+                                     
+                                     <StackPanel Grid.Column="1">
+                                         <Label Content="{DynamicResource Language}" Margin="10, 30, 10, 0"/>
+                                         <ComboBox Margin="10" Width="150" Height="20"
+                                                   SelectedIndex="{Binding SelectedLanguageIndex, Mode=TwoWay}">
+                                             <ComboBoxItem>English</ComboBoxItem>
+                                             <ComboBoxItem>Українська</ComboBoxItem>
+                                         </ComboBox>
+                                     </StackPanel>
+                                 </Grid>
                              </Grid>
                              <Grid Grid.Row="2" Height="40">
-                                 <Button Content="Назад" 
+                                 <Button Content="{DynamicResource Back}"
                                          Background="{DynamicResource ButtonBackground}"
                                          Foreground="{DynamicResource ButtonForeground}"
                                          FontSize="15"

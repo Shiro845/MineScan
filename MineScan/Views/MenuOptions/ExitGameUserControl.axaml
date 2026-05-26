@@ -17,18 +17,18 @@
                      <Border CornerRadius="10" Height="200" Background="#60606060">
                         <Grid VerticalAlignment="Center" RowDefinitions="*, 200, *">
                             <Grid Grid.Row="1" RowDefinitions="7*, 3*">
-                                <TextBlock Grid.Row="0" Text="Ви справді хочете вийти?" TextWrapping="Wrap"
+                                <TextBlock Grid.Row="0" Text="{DynamicResource YouWantLeave?}" TextWrapping="Wrap"
                                            VerticalAlignment="Center" HorizontalAlignment="Center"
                                            Foreground="{DynamicResource TextBlockForeground}" FontSize="20"/>
                                 <Grid Grid.Row="1" ColumnDefinitions="*, *">
-                                    <Button Grid.Column="0" Content="Ні"
+                                    <Button Grid.Column="0" Content="{DynamicResource No}"
                                             Background="{DynamicResource ButtonBackground}"
                                             Foreground="{DynamicResource ButtonForeground}"
                                             FontSize="15"
                                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                             HorizontalAlignment="Center" Width="120" Height="33" Margin="2"
                                             Command="{Binding GoBack}"/>
-                                    <Button Grid.Column="1" Content="Так"
+                                    <Button Grid.Column="1" Content="{DynamicResource Yes}"
                                             Background="{DynamicResource ButtonBackground}"
                                             Foreground="{DynamicResource ButtonForeground}"
                                             FontSize="15"

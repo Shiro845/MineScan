@@ -35,6 +35,10 @@
                     </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://MineScan/Resources/Languages/English.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
     
@@ -52,9 +56,4 @@
     <Application.DataTemplates>
         <mineScan:ViewLocator/>
     </Application.DataTemplates>
-  
-             
-             
-    <Application.Styles>
-    </Application.Styles>
 </Application>
