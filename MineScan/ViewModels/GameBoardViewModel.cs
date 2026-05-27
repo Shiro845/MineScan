@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.Input;
 using MineScan.Models;
+using MineScan.Services;
 
 namespace MineScan.ViewModels;
 
@@ -71,11 +72,12 @@ public class GameBoardViewModel : ViewModelBase
 
     public bool IsRadarDisabled
     {
-        get => AppSettings.Instance.IsRadarDisabled;
+        get => DataService.Instance.LocalData.IsRadarDisabled;
         set
         {
-            AppSettings.Instance.IsRadarDisabled = value;
+            DataService.Instance.LocalData.IsRadarDisabled = value;
             OnPropertyChanged(nameof(IsRadarDisabled));
+            DataService.Instance.Save();
         }
     }
 
@@ -170,6 +172,7 @@ private DispatcherTimer? _timer;
                 {
                     StopTimer();
                     currentStats.GamesPlayed++;
+                    DataService.Instance.Save();
                     Lose = true;
                 }
 
@@ -182,6 +185,7 @@ private DispatcherTimer? _timer;
                     {
                         currentStats.BestTime = SecondsPassed;
                     }
+                    DataService.Instance.Save();
                     Win = true;
                 }
             }
@@ -216,9 +220,7 @@ private DispatcherTimer? _timer;
         var minesInRadius = Cells.Where(cell => 
             Math.Abs(cell.X - targetX) <= 1 && 
             Math.Abs(cell.Y - targetY) <= 1 && 
-            cell.IsMine &&
-            !cell.IsFlagged &&
-            !cell.IsOpen).ToList();
+            cell is { IsMine: true, IsFlagged: false, IsOpen: false }).ToList();
 
         if (minesInRadius.Any())
         {

@@ -6,7 +6,7 @@ public class PlayingTutorialViewModel : ViewModelBase
 {
     public void GoBack() => NavigationService.Instance.NavigateTo<MainMenuViewModel>();
 
-    public string? GameRulesText => AppSettings.Instance.CurrentLanguage == "English"
+    public string GameRulesText => AppData.Instance.CurrentLanguage == "English"
         ? GameRulesTextEng
         : GameRulesTextUa;
 

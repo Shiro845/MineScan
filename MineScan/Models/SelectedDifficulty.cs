@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using MineScan.Services;
 
 namespace MineScan.Models;
 
@@ -7,9 +8,9 @@ public class SelectedDifficulty : ObservableObject
     public static SelectedDifficulty Instance { get; } = new();
     public GameDifficulty ActualDifficulty { get; set; } = GameDifficulty.Easy;
 
-    public Statistics EasyStats { get; } = new();
-    public Statistics MediumStats { get; } = new();
-    public Statistics HardStats { get; } = new();
+    public Statistics EasyStats => DataService.Instance.LocalData.EasyStats;
+    public Statistics MediumStats => DataService.Instance.LocalData.MediumStats;
+    public Statistics HardStats => DataService.Instance.LocalData.HardStats;
     
     public Statistics GetCurrentStats() => ActualDifficulty switch
     {

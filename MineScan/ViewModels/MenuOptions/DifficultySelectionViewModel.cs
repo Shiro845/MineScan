@@ -24,8 +24,4 @@ public class DifficultySelectionViewModel : ViewModelBase
         get => SelectedDifficulty.Instance.ActualDifficulty == GameDifficulty.Hard; 
         set { if (value) SelectedDifficulty.Instance.ActualDifficulty = GameDifficulty.Hard; } 
     }
-    public DifficultySelectionViewModel()
-    {
-        
-    }
 }

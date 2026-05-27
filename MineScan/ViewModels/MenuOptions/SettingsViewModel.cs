@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Media;
-using CommunityToolkit.Mvvm.Input;
-using MineScan.Models;
+using MineScan.Services;
 
 namespace MineScan.ViewModels.MenuOptions;
 
@@ -15,51 +13,55 @@ public class SettingsViewModel : ViewModelBase
     public void GoBack() => NavigationService.Instance.NavigateTo<MainMenuViewModel>();
     public bool IsMinecraftFont
     {
-        get => field;
+        get => DataService.Instance.LocalData.IsMinecraftFont;
         set
         {
-            field = value;
+            DataService.Instance.LocalData.IsMinecraftFont = value;
             OnPropertyChanged(nameof(IsMinecraftFont));
             ApplyFont(value);
+            DataService.Instance.Save();
         }
     }
 
     public bool IsFullscreen
     {
-        get => (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) 
-               && desktop.MainWindow?.WindowState == WindowState.FullScreen;
+        get => DataService.Instance.LocalData.IsFullscreen;
         set
         {
+            DataService.Instance.LocalData.IsFullscreen = value;
             OnPropertyChanged(nameof(IsFullscreen));
             if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime { MainWindow: not null } desktop)
             {
                 desktop.MainWindow.WindowState = value ? WindowState.FullScreen : WindowState.Normal;
             }
+            DataService.Instance.Save();
         }
     }
     
     public bool IsRadarDisabled
     {
-        get => AppSettings.Instance.IsRadarDisabled;
+        get => DataService.Instance.LocalData.IsRadarDisabled;
         set
         {
-            AppSettings.Instance.IsRadarDisabled = value;
+            DataService.Instance.LocalData.IsRadarDisabled = value;
             OnPropertyChanged(nameof(IsRadarDisabled));
+            DataService.Instance.Save();
         }
     }
     
     public byte SelectedLanguageIndex
     {
-        get => (byte)(AppSettings.Instance.CurrentLanguage == "Ukrainian" ? 1 : 0);
+        get => (byte)(DataService.Instance.LocalData.CurrentLanguage == "Ukrainian" ? 1 : 0);
         set
         {
             string lang = (value == 1) ? "Ukrainian" : "English";
         
-            if (AppSettings.Instance.CurrentLanguage != lang)
+            if (DataService.Instance.LocalData.CurrentLanguage != lang)
             {
-                AppSettings.Instance.CurrentLanguage = lang;
+                DataService.Instance.LocalData.CurrentLanguage = lang;
                 OnPropertyChanged(nameof(SelectedLanguageIndex));
                 SetLanguage(lang);
+                DataService.Instance.Save();
             }
         }
     }
