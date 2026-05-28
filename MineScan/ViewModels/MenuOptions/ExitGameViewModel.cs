@@ -1,4 +1,5 @@
 ﻿using System;
+using MineScan.Services;
 
 namespace MineScan.ViewModels.MenuOptions;
 

@@ -1,4 +1,6 @@
-﻿namespace MineScan.ViewModels;
+﻿using MineScan.Services;
+
+namespace MineScan.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {

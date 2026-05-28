@@ -66,4 +66,14 @@ public class Cell : ObservableObject
             OnPropertyChanged();
         }
     }
+    
+    public bool IsRadarHighlighted
+    {
+        get;
+        set
+        {
+            field = value;
+            OnPropertyChanged();
+        }
+    }
 }

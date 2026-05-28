@@ -18,6 +18,8 @@ public class GameBoardViewModel : ViewModelBase
     public ICommand OpenCellCommand { get; set; }
     public ICommand FlagCellCommand { get; set; }
     public ICommand RadarPingCommand { get; set; }
+    public ICommand CellPointerEnteredCommand { get; set; }
+    public ICommand CellPointerExitedCommand { get; set; }
     private MineField MineField { get; }
 
     public List<Cell> Cells
@@ -198,6 +200,34 @@ private DispatcherTimer? _timer;
             }
         });
         RadarPingCommand = new RelayCommand(UseRadarPing);
+        
+        CellPointerEnteredCommand = new RelayCommand<Cell>((cell) =>
+        {
+            if (cell == null || !IsRadarTargeting || RadarUsed || Lose || Win) return;
+
+            var areaCells = Cells.Where(c => 
+                Math.Abs(c.X - cell.X) <= 1 && 
+                Math.Abs(c.Y - cell.Y) <= 1).ToList();
+
+            foreach (var c in areaCells)
+            {
+                c.IsRadarHighlighted = true;
+
+                if (c is { IsMine: true, IsOpen: false, IsFlagged: false })
+                {
+                    c.IsRadarScanning = true;
+                }
+            }
+        });
+
+        CellPointerExitedCommand = new RelayCommand<Cell>(_ =>
+        {
+            foreach (var c in Cells)
+            {
+                c.IsRadarHighlighted = false;
+                c.IsRadarScanning = false;
+            }
+        });
     }
 
     private void UseRadarPing()
@@ -210,10 +240,15 @@ private DispatcherTimer? _timer;
     private void ExecuteRadarAt(Cell centerCell)
     {
         if (!IsRadarTargeting || RadarUsed) return;
-
+        
         IsRadarTargeting = false;
         RadarUsed = true;
 
+        foreach (var c in Cells)
+        {
+            c.IsRadarHighlighted = false;
+        }
+        
         var targetX = centerCell.X;
         var targetY = centerCell.Y;
 
@@ -231,14 +266,28 @@ private DispatcherTimer? _timer;
 
             Task.Run(async () =>
             {
-                await Task.Delay(1000);
-                Dispatcher.UIThread.Post(() =>
+                for (int i = 0; i < 3; i++)
                 {
-                    foreach (var mine in minesInRadius)
+                    Dispatcher.UIThread.Post(() =>
                     {
-                        mine.IsRadarScanning = false;
-                    }
-                });
+                        foreach (var mine in minesInRadius)
+                        {
+                            mine.IsRadarScanning = true;
+                        }
+                    });
+
+                    await Task.Delay(500);
+
+                    Dispatcher.UIThread.Post(() =>
+                    {
+                        foreach (var mine in minesInRadius)
+                        {
+                            mine.IsRadarScanning = false;
+                        }
+                    });
+
+                    await Task.Delay(250);
+                }
             });
         }
     }

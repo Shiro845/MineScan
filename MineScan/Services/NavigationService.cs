@@ -1,17 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace MineScan;
+namespace MineScan.Services;
 
-public partial class NavigationService : ObservableObject
+public class NavigationService : ObservableObject
 {
     public static NavigationService Instance { get; } = new();
-    
+
     public object? CurrentPage
     {
-        get => field;
-        set  => SetProperty(ref field, value);
+        get;
+        set => SetProperty(ref field, value);
     }
-    
+
     public void NavigateTo<T>() where T : new()
     {
         CurrentPage = new T();

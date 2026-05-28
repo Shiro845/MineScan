@@ -30,8 +30,13 @@
                 <Style Selector="Button.Cell.Flagged">
                     <Setter Property="Background" Value="Orange"/>
                 </Style>
-                <Style Selector="Button.Cell.RadarHighlight">
+                <Style Selector="Button.Cell.RadarScanning">
                     <Setter Property="Background" Value="DarkRed"/>
+                </Style>
+                <Style Selector="Button.Cell.RadarTarget:not(.Opened):not(.Flagged)">
+                    <Setter Property="Background" Value="{DynamicResource ButtonBackground}"/> 
+                    <Setter Property="BorderBrush" Value="{DynamicResource ButtonForeground}"/>
+                    <Setter Property="BorderThickness" Value="1"/>
                 </Style>
                 <Style Selector="Button.Btn:pointerover /template/ ContentPresenter">
                     <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
@@ -96,11 +101,24 @@
                                                         Classes.Opened="{Binding IsOpen}"
                                                         Classes.Mine="{Binding IsMine}"
                                                         Classes.Flagged="{Binding IsFlagged}"
-                                                        Classes.RadarHighlight="{Binding IsRadarScanning}">
+                                                        Classes.RadarScanning="{Binding IsRadarScanning}"
+                                                        Classes.RadarTarget="{Binding IsRadarHighlighted}">
                                                 <Interaction.Behaviors>
                                                     <EventTriggerBehavior EventName="RightTapped">
                                                         <InvokeCommandAction 
                                                             Command="{Binding #ItemsControl.((vm:GameBoardViewModel)DataContext).FlagCellCommand}"
+                                                            CommandParameter="{Binding}" />
+                                                    </EventTriggerBehavior>
+                                                    
+                                                    <EventTriggerBehavior EventName="PointerEntered">
+                                                        <InvokeCommandAction 
+                                                            Command="{Binding #ItemsControl.((vm:GameBoardViewModel)DataContext).CellPointerEnteredCommand}" 
+                                                            CommandParameter="{Binding}" />
+                                                    </EventTriggerBehavior>
+
+                                                    <EventTriggerBehavior EventName="PointerExited">
+                                                        <InvokeCommandAction 
+                                                            Command="{Binding #ItemsControl.((vm:GameBoardViewModel)DataContext).CellPointerExitedCommand}" 
                                                             CommandParameter="{Binding}" />
                                                     </EventTriggerBehavior>
                                                 </Interaction.Behaviors>
