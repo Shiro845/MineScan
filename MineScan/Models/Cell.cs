@@ -7,20 +7,20 @@ public class Cell : ObservableObject
     public bool IsMine
     {
         get => field;
-        set { SetProperty(ref field, value); }
+        set => SetProperty(ref field, value);
     }
 
     public bool IsOpen
     {
         get => field;
-        set { SetProperty(ref field, value); } 
+        set => SetProperty(ref field, value);
     }
     
 
     public bool IsFlagged
     {
         get => field;
-        set { SetProperty(ref field, value); } 
+        set => SetProperty(ref field, value);
     }
 
     public sbyte MinesAround
@@ -56,14 +56,14 @@ public class Cell : ObservableObject
     }
     public int X { get; set; }
     public int Y { get; set; }
-    
+
     public bool IsRadarScanning
     {
-        get => field;
+        get;
         set
         {
             field = value;
-            OnPropertyChanged(nameof(IsRadarScanning));
+            OnPropertyChanged();
         }
     }
 }

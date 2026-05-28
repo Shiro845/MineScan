@@ -1,4 +1,4 @@
-﻿using MineScan.Models;
+﻿using MineScan.Services;
 
 namespace MineScan.ViewModels.MenuOptions;
 
@@ -6,7 +6,7 @@ public class PlayingTutorialViewModel : ViewModelBase
 {
     public void GoBack() => NavigationService.Instance.NavigateTo<MainMenuViewModel>();
 
-    public string GameRulesText => AppData.Instance.CurrentLanguage == "English"
+    public string GameRulesText => DataService.Instance.LocalData.CurrentLanguage == "English"
         ? GameRulesTextEng
         : GameRulesTextUa;
 

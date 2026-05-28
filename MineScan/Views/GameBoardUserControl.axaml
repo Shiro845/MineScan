@@ -135,7 +135,7 @@
                                                    Text="{DynamicResource YouLose}"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Center"
-                                                   Margin="10"/>
+                                                   Margin="11, 10, 10, 10"/>
                                     </Viewbox>
                             </Border>
                             <Border Height="{Binding #ItemsControl.Bounds.Height}"
@@ -147,7 +147,7 @@
                                                    Text="{DynamicResource YouWin}"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Stretch"
-                                                   Margin="10"/>
+                                                   Margin="11, 10, 10, 10"/>
                                     </Viewbox>
                             </Border>
                          </Grid>

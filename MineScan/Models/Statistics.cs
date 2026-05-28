@@ -7,36 +7,37 @@ public class Statistics : ObservableObject
 {
     public int GamesPlayed
     {
-        get => field;
+        get;
         set
         {
             field = value;
-            OnPropertyChanged(nameof(GamesPlayed));
-            OnPropertyChanged(nameof(WinRate));
-        }
-    }    
-    public int GamesWon
-    {
-        get => field;
-        set
-        {
-            field = value;
-            OnPropertyChanged(nameof(GamesWon));
+            OnPropertyChanged();
             OnPropertyChanged(nameof(WinRate));
         }
     }
-    
-    public int BestTime
+
+    public int GamesWon
     {
-        get => field;
+        get;
         set
         {
             field = value;
-            OnPropertyChanged(nameof(BestTime));
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(WinRate));
+        }
+    }
+
+    public int BestTime
+    {
+        get;
+        set
+        {
+            field = value;
+            OnPropertyChanged();
             OnPropertyChanged(nameof(BestTimeText));
         }
     }
-    
+
     public string BestTimeText => BestTime == 0 
         ? "---"
         : TimeSpan.FromSeconds(BestTime).ToString(@"mm\:ss");

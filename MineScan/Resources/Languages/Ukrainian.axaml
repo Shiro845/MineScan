@@ -16,7 +16,7 @@
     <system:String x:Key="StartGame">Почати гру</system:String>
     <!-- Statistics -->
     <system:String x:Key="GamesCount">Кількість ігор:</system:String>
-    <system:String x:Key="Winrate">Відсоток перемог:</system:String>
+    <system:String x:Key="Winrate">Вінрейт:</system:String>
     <system:String x:Key="BestTime">Найкращий час:</system:String>
     <!-- Themes -->
     <system:String x:Key="LightTheme">Світла Тема</system:String>
