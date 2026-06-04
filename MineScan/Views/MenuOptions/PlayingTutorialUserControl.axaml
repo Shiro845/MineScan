@@ -2,47 +2,140 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewModels="using:MineScan.ViewModels"
              xmlns:menuOptions="clr-namespace:MineScan.ViewModels.MenuOptions"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="menuOptions:PlayingTutorialViewModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="menuOptions:PlayingTutorialViewModel"
              x:Class="MineScan.Views.MenuOptions.PlayingTutorialUserControl"
              Background="{DynamicResource MainBackground}">
-             <UserControl.Styles>
-                 <Style Selector="Button:pointerover /template/ ContentPresenter">
-                     <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
-                     <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
-                 </Style>
-             </UserControl.Styles>
-             <Viewbox Stretch="Uniform">
-                 <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
-                     <Border CornerRadius="10" Height="350" Background="#60606060">
-                         <Grid VerticalAlignment="Center" RowDefinitions="50, 250, 50">
-                             <TextBlock Grid.Row="0" Text="{DynamicResource HowToPlay}"
-                                        Foreground="{DynamicResource TextBlockForeground}"
-                                        HorizontalAlignment="Center" VerticalAlignment="Center"
-                                        Margin="5" FontSize="20"/>
-                             <Grid Grid.Row="1">
-                                 <Panel Background="#30000000">
-                                     <ScrollViewer>
-                                         <TextBlock Text="{Binding GameRulesText}"
-                                                    TextWrapping="Wrap"
-                                                    FontSize="10"
-                                                    LineHeight="20"
-                                                    TextAlignment="Left"
-                                                    Margin="5"/>
-                                     </ScrollViewer>
-                                 </Panel>
-                             </Grid>
-                             <Grid Grid.Row="2" Height="40">
-                                 <Button Content="{DynamicResource Back}"
-                                         Background="{DynamicResource ButtonBackground}"
-                                         Foreground="{DynamicResource ButtonForeground}"
-                                         FontSize="15"
-                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                         HorizontalAlignment="Center" Width="120" Height="33" Margin="2" Command="{Binding GoBack}"/> 
-                             </Grid>
-                         </Grid>
-                     </Border>
-                 </Grid>
-             </Viewbox>
+    <UserControl.Styles>
+        <Style Selector="Button.Tab">
+            <Setter Property="Background" Value="{DynamicResource ButtonBackground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="CornerRadius" Value="4 4 0 0"/>
+            <Setter Property="Margin" Value="2 0 2 0"/>
+        </Style>
+        <Style Selector="Button.Tab:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonBackground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}"/>
+        </Style>
+        <Style Selector="Button.Tab.Active">
+            <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style Selector="Button.Tab.Active:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource TextBlockForeground}"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style Selector="Button.Back:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Viewbox Stretch="Uniform">
+        <Grid Width="420" Height="460" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border CornerRadius="10" Background="#60606060" Height="380">
+                <Grid RowDefinitions="35, 31, 270, 44">
+                    <TextBlock Grid.Row="0"
+                               Text="{DynamicResource HowToPlay}"
+                               Foreground="{DynamicResource TextBlockForeground}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="20"/>
+                    <Grid Grid.Row="1" ColumnDefinitions="*, *, *" Margin="8 0 8 0" VerticalAlignment="Bottom">
+                        <Button Grid.Column="0"
+                                Width="130"
+                                Classes="Tab"
+                                BorderBrush="{DynamicResource TextBlockForeground}"
+                                BorderThickness="1, 1, 1, 0"
+                                Classes.Active="{Binding ShowRules}"
+                                Content="Rules"
+                                Command="{Binding SelectRules}"/>
+                        <Button Grid.Column="1"
+                                Width="130"
+                                Classes="Tab"
+                                BorderBrush="{DynamicResource TextBlockForeground}"
+                                BorderThickness="1, 1, 1, 0"
+                                Classes.Active="{Binding ShowHotkeys}"
+                                Content="Hotkeys"
+                                Command="{Binding SelectHotkeys}"/>
+                        <Button Grid.Column="2"
+                                Width="130"
+                                Classes="Tab"
+                                BorderBrush="{DynamicResource TextBlockForeground}"
+                                BorderThickness="1, 1, 1, 0"
+                                Content="Levels"
+                                Classes.Active="{Binding ShowDifficulties}"
+                                Command="{Binding SelectDifficulties}">
+                        </Button>
+                    </Grid>
+                    <Border Grid.Row="2" Background="#10ffffff"
+                            CornerRadius="0 0 4 4"
+                            Margin="8 0 8 0"
+                            Width="399"
+                            BorderBrush="{DynamicResource TextBlockForeground}"
+                            BorderThickness="1, 0, 1, 1">
+                        <ScrollViewer IsVisible="{Binding ShowRules}" Padding="2">
+                            <TextBlock Text="{Binding RulesText}"
+                                       TextWrapping="Wrap"
+                                       FontSize="11"
+                                       LineHeight="20"
+                                       Foreground="{DynamicResource TextBlockForeground}"
+                                       Margin="10 8 10 8"/>
+                        </ScrollViewer>
+                    </Border>
+                    <Border Grid.Row="2" Background="#10ffffff"
+                            CornerRadius="0 0 4 4"
+                            Margin="8 0 8 0"
+                            Width="399"
+                            BorderBrush="{DynamicResource TextBlockForeground}"
+                            BorderThickness="1, 0, 1, 1"
+                            IsVisible="{Binding ShowHotkeys}">
+                        <ScrollViewer Padding="2">
+                            <TextBlock Text="{Binding HotkeysText}"
+                                       TextWrapping="Wrap"
+                                       FontSize="11"
+                                       LineHeight="22"
+                                       Foreground="{DynamicResource TextBlockForeground}"
+                                       Margin="10 8 10 8"/>
+                        </ScrollViewer>
+                    </Border>
+                    <Border Grid.Row="2" Background="#10ffffff"
+                            CornerRadius="0 0 4 4"
+                            Margin="8 0 8 0"
+                            Width="399"
+                            BorderBrush="{DynamicResource TextBlockForeground}"
+                            BorderThickness="1, 0, 1, 1"
+                            IsVisible="{Binding ShowDifficulties}">
+                        <ScrollViewer Padding="2">
+                            <TextBlock Text="{Binding DifficultiesText}"
+                                       TextWrapping="Wrap"
+                                       FontSize="11"
+                                       LineHeight="20"
+                                       Foreground="{DynamicResource TextBlockForeground}"
+                                       Margin="10 8 10 8"/>
+                        </ScrollViewer>
+                    </Border>
+                    <Grid Grid.Row="3" VerticalAlignment="Center">
+                        <Button Classes="Back"
+                                Content="{DynamicResource Back}"
+                                Background="{DynamicResource ButtonBackground}"
+                                Foreground="{DynamicResource ButtonForeground}"
+                                FontSize="15"
+                                HorizontalContentAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Width="120" Height="33"
+                                Command="{Binding GoBack}"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Viewbox>
 </UserControl>

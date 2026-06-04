@@ -58,6 +58,9 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/CustomDifficultyUserControl.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/Admin/RiderProjects/MineScan/MineScan/Views/MenuOptions/DifficultySelectionUserControl.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

@@ -2,10 +2,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="using:MineScan.ViewModels"
+             xmlns:vm="using:MineScan.ViewModels" x:CompileBindings="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="vm:GameBoardViewModel"
              x:Class="MineScan.Views.GameBoardUserControl">
-            <UserControl.Styles>
+             <UserControl.KeyBindings>
+                 <KeyBinding Gesture="Ctrl+G" 
+                             Command="{Binding ToggleGhostMode}"/>
+                 
+                 <KeyBinding Gesture="Ctrl+S" 
+                             Command="{Binding AutoSolve}"/>
+             </UserControl.KeyBindings>
+             <UserControl.Styles>
                 <Style Selector="Button.Cell">
                     <Setter Property="Background" Value="Gray"/>
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -31,6 +38,26 @@
                     <Setter Property="Background" Value="Orange"/>
                 </Style>
                 <Style Selector="Button.Cell.RadarScanning">
+                    <Setter Property="Background" Value="DarkRed"/>
+                </Style>
+                <Style Selector="Button.Cell.Questioned">
+                    <Setter Property="Background" Value="#4b5563"/>
+                </Style>
+                <Style Selector="Button.Cell.Revealing">
+                    <Style.Animations>
+                        <Animation Duration="0:0:0.25" FillMode="Forward" Easing="BackEaseOut">
+                            <KeyFrame Cue="0%">
+                                <Setter Property="ScaleTransform.ScaleX" Value="0.5"/>
+                                <Setter Property="ScaleTransform.ScaleY" Value="0.5"/>
+                            </KeyFrame>
+                            <KeyFrame Cue="100%">
+                                <Setter Property="ScaleTransform.ScaleX" Value="1"/>
+                                <Setter Property="ScaleTransform.ScaleY" Value="1"/>
+                            </KeyFrame>
+                        </Animation>
+                    </Style.Animations>
+                </Style>
+                <Style Selector="Button.Cell.Ghost:not(.Opened)">
                     <Setter Property="Background" Value="DarkRed"/>
                 </Style>
                 <Style Selector="Button.Cell.RadarTarget:not(.Opened):not(.Flagged)">
@@ -102,7 +129,10 @@
                                                         Classes.Mine="{Binding IsMine}"
                                                         Classes.Flagged="{Binding IsFlagged}"
                                                         Classes.RadarScanning="{Binding IsRadarScanning}"
-                                                        Classes.RadarTarget="{Binding IsRadarHighlighted}">
+                                                        Classes.RadarTarget="{Binding IsRadarHighlighted}"
+                                                        Classes.Questioned="{Binding IsQuestioned}"
+                                                        Classes.Revealing="{Binding IsRevealing}"
+                                                        Classes.Ghost="{Binding IsGhostVisible}">
                                                 <Interaction.Behaviors>
                                                     <EventTriggerBehavior EventName="RightTapped">
                                                         <InvokeCommandAction 
@@ -136,6 +166,11 @@
                                                                    Stretch="Fill"
                                                                    IsVisible="{Binding IsFlagged}">
                                                             </Image>
+                                                            <Viewbox Stretch="Uniform" IsVisible="{Binding IsQuestioned}">
+                                                                <TextBlock Text="?"
+                                                                           Foreground="White"
+                                                                           FontWeight="Bold"/>
+                                                            </Viewbox>
                                                         </Panel>
                                                     </Viewbox>
                                                 </Button> 
@@ -167,6 +202,39 @@
                                                    HorizontalAlignment="Stretch"
                                                    Margin="11, 10, 10, 10"/>
                                     </Viewbox>
+                            </Border>
+
+                            <Border Height="{Binding #ItemsControl.Bounds.Height}"
+                                    Width="{Binding #ItemsControl.Bounds.Width}"
+                                    Background="#e8000000"
+                                    IsVisible="{Binding ShowExtremeJoke}">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="8">
+                                    <TextBlock Text="{DynamicResource ExtremeWarning}"
+                                               Foreground="Red"
+                                               FontWeight="Bold"
+                                               FontSize="16"
+                                               HorizontalAlignment="Center"/>
+                                    <ProgressBar Value="{Binding ExtremeProgress}"
+                                                 Minimum="0" Maximum="100"
+                                                 Width="200" Height="16"
+                                                 Foreground="Red"/>
+                                    <TextBlock Text="{Binding ExtremeProgress, StringFormat='{}{0:0}%'}"
+                                               Foreground="#aaaaaa"
+                                               FontSize="11"
+                                               HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Height="{Binding #ItemsControl.Bounds.Height}"
+                                    Width="{Binding #ItemsControl.Bounds.Width}"
+                                    Background="#e8000000"
+                                    IsVisible="{Binding ShowExtremeMercy}">
+                                    <TextBlock Text="{DynamicResource ExtremeMercy}"
+                                               Foreground="#ff4444"
+                                               FontWeight="Bold"
+                                               FontSize="18"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
                             </Border>
                          </Grid>
                          <Grid Grid.Row="2" ColumnDefinitions="*, *" Margin="0, 5, 0, 5">

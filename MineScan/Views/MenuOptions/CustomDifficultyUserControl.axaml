@@ -1,0 +1,81 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MineScan.ViewModels.MenuOptions"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:CustomDifficultyViewModel"
+             x:Class="MineScan.Views.MenuOptions.CustomDifficultyUserControl">
+    <UserControl.Styles>
+        <Style Selector="TextBox.Invalid">
+            <Setter Property="BorderBrush" Value="Red"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonForeground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ButtonBackground}"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid Background="{DynamicResource MainBackground}">
+        <Viewbox Stretch="Uniform">
+            <Grid Width="400" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border CornerRadius="10" Height="300" Background="#60606060">
+                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" Margin="20" VerticalAlignment="Center">
+
+                        <TextBlock Grid.Row="0"
+                                   Text="{DynamicResource CustomDifficulty}"
+                                   Foreground="{DynamicResource TextBlockForeground}"
+                                   FontSize="22" FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,16"/>
+
+                        <Grid Grid.Row="1" ColumnDefinitions="*, *" Margin="0,0,0,8">
+                            <TextBlock Grid.Column="0" Text="{DynamicResource Width}"
+                                       Foreground="{DynamicResource TextBlockForeground}"
+                                       VerticalAlignment="Center" FontSize="14"/>
+                            <TextBox Grid.Column="1" Text="{Binding WidthText}"
+                                     Classes.Invalid="{Binding !IsWidthValid}"
+                                     FontSize="14" HorizontalContentAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Row="2" ColumnDefinitions="*, *" Margin="0,0,0,8">
+                            <TextBlock Grid.Column="0" Text="{DynamicResource Height}"
+                                       Foreground="{DynamicResource TextBlockForeground}"
+                                       VerticalAlignment="Center" FontSize="14"/>
+                            <TextBox Grid.Column="1" Text="{Binding HeightText}"
+                                     Classes.Invalid="{Binding !IsHeightValid}"
+                                     FontSize="14" HorizontalContentAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Row="3" ColumnDefinitions="*, *" Margin="0,0,0,16">
+                            <TextBlock Grid.Column="0" Text="{DynamicResource MinesCount}"
+                                       Foreground="{DynamicResource TextBlockForeground}"
+                                       VerticalAlignment="Center" FontSize="14"/>
+                            <TextBox Grid.Column="1" Text="{Binding MinesText}"
+                                     Classes.Invalid="{Binding !IsMinesValid}"
+                                     FontSize="14" HorizontalContentAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Row="4" ColumnDefinitions="*, *">
+                            <Button Grid.Column="0" Content="{DynamicResource Back}"
+                                    Background="{DynamicResource ButtonBackground}"
+                                    Foreground="{DynamicResource ButtonForeground}"
+                                    FontSize="15" HorizontalContentAlignment="Center"
+                                    HorizontalAlignment="Right" Width="130" Height="33" Margin="2"
+                                    Command="{Binding GoBack}"/>
+                            <Button Grid.Column="1" Content="{DynamicResource PlayCustom}"
+                                    Background="{DynamicResource ButtonBackground}"
+                                    Foreground="{DynamicResource ButtonForeground}"
+                                    FontSize="15" HorizontalContentAlignment="Center"
+                                    HorizontalAlignment="Left" Width="130" Height="33" Margin="2"
+                                    IsEnabled="{Binding CanPlay}"
+                                    Command="{Binding PlayCommand}"/>
+                        </Grid>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</UserControl>

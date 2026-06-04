@@ -72,6 +72,47 @@ public class GameBoardViewModel : ViewModelBase
         }
     }
 
+    public bool IsGhostMode
+    {
+        get => field;
+        set
+        {
+            field = value;
+            OnPropertyChanged(nameof(IsGhostMode));
+            foreach (var cell in Cells)
+                cell.IsGhostVisible = value && cell.IsMine && !cell.IsOpen;
+        }
+    }
+
+    public bool IsExtreme { get; private set; }
+
+    public int ExtremeLosePhase
+    {
+        get => field;
+        set
+        {
+            field = value;
+            OnPropertyChanged(nameof(ExtremeLosePhase));
+            OnPropertyChanged(nameof(ShowExtremeJoke));
+            OnPropertyChanged(nameof(ShowExtremeMercy));
+        }
+    }
+
+    public bool ShowExtremeJoke => ExtremeLosePhase == 1;
+    public bool ShowExtremeMercy => ExtremeLosePhase == 2;
+
+    public double ExtremeProgress
+    {
+        get => field;
+        set
+        {
+            field = value;
+            OnPropertyChanged(nameof(ExtremeProgress));
+        }
+    }
+
+    public ICommand ExtremeMercyCommand { get; private set; }
+
     public bool IsRadarDisabled
     {
         get => DataService.Instance.LocalData.IsRadarDisabled;
@@ -115,9 +156,122 @@ private DispatcherTimer? _timer;
         _timer = null;
     }
 
+    private void TriggerCascadeAnimation(int centerX, int centerY, HashSet<(int, int)> newlyOpened)
+    {
+        var queue = new Queue<(int x, int y, int level)>();
+        var visited = new HashSet<(int, int)>();
+
+        queue.Enqueue((centerX, centerY, 0));
+        visited.Add((centerX, centerY));
+
+        while (queue.Count > 0)
+        {
+            var (x, y, level) = queue.Dequeue();
+            var cell = Cells.FirstOrDefault(c => c.X == x && c.Y == y);
+            if (cell == null) continue;
+
+            cell.RevealDelay = level * 40;
+
+            for (int dx = -1; dx <= 1; dx++)
+            {
+                for (int dy = -1; dy <= 1; dy++)
+                {
+                    if (dx == 0 && dy == 0) continue;
+                    var nx = x + dx;
+                    var ny = y + dy;
+                    if (visited.Contains((nx, ny))) continue;
+                    if (!newlyOpened.Contains((nx, ny))) continue;
+                    visited.Add((nx, ny));
+                    queue.Enqueue((nx, ny, level + 1));
+                }
+            }
+        }
+
+        foreach (var (cx, cy) in newlyOpened)
+        {
+            var cell = Cells.FirstOrDefault(c => c.X == cx && c.Y == cy);
+            if (cell == null) continue;
+            var delay = cell.RevealDelay;
+            Task.Run(async () =>
+            {
+                await Task.Delay(delay);
+                Dispatcher.UIThread.Post(() => cell.IsRevealing = true);
+                await Task.Delay(300);
+                Dispatcher.UIThread.Post(() => cell.IsRevealing = false);
+            });
+        }
+    }
+
+    public void ToggleGhostMode()
+    {
+        IsGhostMode = !IsGhostMode;
+    }
+
+    public void AutoSolve()
+    {
+        if (Lose || Win) return;
+        if (!MineField.IsMinesSpawned) return;
+
+        var safeCells = Cells.Where(c => !c.IsMine && !c.IsOpen).ToList();
+        if (safeCells.Count == 0) return;
+
+        Task.Run(async () =>
+        {
+            foreach (var cell in safeCells)
+            {
+                await Task.Delay(30);
+                Dispatcher.UIThread.Post(() =>
+                {
+                    if (Win || Lose) return;
+                    var openBefore = new HashSet<(int, int)>(Cells.Where(c => c.IsOpen).Select(c => (c.X, c.Y)));
+                    MineField.OpenCell(cell.X, cell.Y);
+                    var newlyOpened = new HashSet<(int, int)>(
+                        Cells.Where(c => c.IsOpen).Select(c => (c.X, c.Y)).Except(openBefore));
+                    if (newlyOpened.Count > 0)
+                        TriggerCascadeAnimation(cell.X, cell.Y, newlyOpened);
+                });
+            }
+
+            await Task.Delay(safeCells.Count * 30 + 400);
+            Dispatcher.UIThread.Post(() =>
+            {
+                if (!Win && MineField.IsWon)
+                {
+                    StopTimer();
+                    var currentStats = SelectedDifficulty.Instance.GetCurrentStats();
+                    currentStats.GamesPlayed++;
+                    currentStats.GamesWon++;
+                    DataService.Instance.Save();
+                    Win = true;
+                }
+            });
+        });
+    }
+
+    private void TriggerExtremeJoke()
+    {
+        ExtremeLosePhase = 1;
+        ExtremeProgress = 0;
+        Task.Run(async () =>
+        {
+            for (int i = 0; i <= 100; i++)
+            {
+                await Task.Delay(40);
+                var i1 = i;
+                Dispatcher.UIThread.Post(() => ExtremeProgress = i1);
+            }
+            await Task.Delay(600);
+            Dispatcher.UIThread.Post(() =>
+            {
+                ExtremeLosePhase = 2;
+                Lose = true;
+            });
+        });
+    }
+
     public sbyte Width { get; set; }
     public sbyte Height { get; set; }
-    private sbyte Mines { get; }
+    private int Mines { get; }
     
     public GameBoardViewModel()
     {
@@ -141,15 +295,33 @@ private DispatcherTimer? _timer;
                 Height = 20;
                 Mines = 120;
                 break;
+            case GameDifficulty.Custom:
+                Width = (sbyte)DataService.Instance.LocalData.CustomWidth;
+                Height = (sbyte)DataService.Instance.LocalData.CustomHeight;
+                Mines = DataService.Instance.LocalData.CustomMines;
+                break;
+            case GameDifficulty.Extreme:
+                Width = 30;
+                Height = 20;
+                Mines = 150;
+                IsExtreme = true;
+                break;
             default:
                 Width = 9;
                 Height = 9;
                 Mines = 10;
                 break;
         }
-        
+
         MineField = new MineField(Width, Height);
         Cells = MineField.ToCellList();
+
+        ExtremeMercyCommand = new RelayCommand(() =>
+        {
+            ExtremeLosePhase = 0;
+            Lose = false;
+            NavigationService.Instance.NavigateTo<GameBoardViewModel>();
+        });
         
         OpenCellCommand = new RelayCommand<Cell>(cell =>
         {
@@ -168,14 +340,23 @@ private DispatcherTimer? _timer;
                     MineField.SpawnMines(Mines, cell.X, cell.Y);
                     StartTimer();
                 }
+                var openBefore = new HashSet<(int, int)>(Cells.Where(c => c.IsOpen).Select(c => (c.X, c.Y)));
                 MineField.OpenCell(cell.X, cell.Y);
-                
+                var newlyOpened = new HashSet<(int, int)>(
+                    Cells.Where(c => c.IsOpen).Select(c => (c.X, c.Y))
+                         .Except(openBefore));
+                if (newlyOpened.Count > 0)
+                    TriggerCascadeAnimation(cell.X, cell.Y, newlyOpened);
+
                 if (MineField.IsExploded)
                 {
                     StopTimer();
                     currentStats.GamesPlayed++;
                     DataService.Instance.Save();
-                    Lose = true;
+                    if (IsExtreme)
+                        TriggerExtremeJoke();
+                    else
+                        Lose = true;
                 }
 
                 else if (MineField.IsWon)

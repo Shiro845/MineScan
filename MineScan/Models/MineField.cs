@@ -120,7 +120,7 @@ public class MineField
     {
         if (IsGameOver) return;
         if (x < 0 || x >= _field.GetLength(0) || y < 0 || y >= _field.GetLength(1)) return;
-        if (_field[x, y].IsOpen || _field[x, y].IsFlagged) return;
+        if (_field[x, y].IsOpen || _field[x, y].IsFlagged || _field[x, y].IsQuestioned) return;
         
         _field[x, y].IsOpen = true;
         
@@ -159,9 +159,20 @@ public class MineField
     public void ToggleFlag(int x, int y)
     {
         if (!IsMinesSpawned) return;
-        if (!_field[x, y].IsOpen)
+        if (_field[x, y].IsOpen) return;
+
+        if (!_field[x, y].IsFlagged && !_field[x, y].IsQuestioned)
         {
-            _field[x, y].IsFlagged = !_field[x, y].IsFlagged;
+            _field[x, y].IsFlagged = true;
+        }
+        else if (_field[x, y].IsFlagged)
+        {
+            _field[x, y].IsFlagged = false;
+            _field[x, y].IsQuestioned = true;
+        }
+        else
+        {
+            _field[x, y].IsQuestioned = false;
         }
     }
 

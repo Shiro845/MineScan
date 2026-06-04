@@ -10,10 +10,24 @@
     <system:String x:Key="Exit">Exit</system:String>
     <!-- DifficultySelection -->
     <system:String x:Key="ChooseDifficulty">Choose Difficulty</system:String>
+    <system:String x:Key="StartGame">Start Game</system:String>
     <system:String x:Key="Easy">Easy</system:String>
     <system:String x:Key="Medium">Medium</system:String>
     <system:String x:Key="Hard">Hard</system:String>
-    <system:String x:Key="StartGame">Start Game</system:String>
+    <system:String x:Key="Custom">Custom</system:String>
+    <system:String x:Key="CustomDifficulty">Custom Difficulty</system:String>
+    <system:String x:Key="Width">Width (5–30):</system:String>
+    <system:String x:Key="Height">Height (5–20):</system:String>
+    <system:String x:Key="MinesCount">Mines:</system:String>
+    <system:String x:Key="PlayCustom">Play</system:String>
+    <system:String x:Key="Extreme">EXTREME</system:String>
+    <system:String x:Key="ExtremeWarning">WARNING: Deleting System32...</system:String>
+    <system:String x:Key="ExtremeMercy">Nah, I'll spare you >:3</system:String>
+    <system:String x:Key="EasyDesc">10 mines, 9х9</system:String>
+    <system:String x:Key="MediumDesc">40 mines, 16х16</system:String>
+    <system:String x:Key="HardDesc">120 mines, 30х20</system:String>
+    <system:String x:Key="CustomDesc">???</system:String>
+    <system:String x:Key="ExtremeDesc">150 mines, 30х20</system:String>
     <!-- Statistics -->
     <system:String x:Key="GamesCount">Games Count:</system:String>
     <system:String x:Key="Winrate">Winrate:</system:String>
@@ -38,6 +52,10 @@
     <system:String x:Key="YouWin">You Win</system:String>
     <system:String x:Key="Menu">Menu</system:String>
     <system:String x:Key="Restart">Restart</system:String>
+    <!-- Tutorial -->
+    <system:String x:Key="Rules">Rules</system:String>
+    <system:String x:Key="Hotkeys">Hotkeys</system:String>
+    <system:String x:Key="Levels">Levels</system:String>
     <!-- Another -->
     <system:String x:Key="Back">Back</system:String>
 </ResourceDictionary>

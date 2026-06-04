@@ -76,4 +76,36 @@ public class Cell : ObservableObject
             OnPropertyChanged();
         }
     }
+
+    public bool IsQuestioned
+    {
+        get;
+        set
+        {
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public bool IsRevealing
+    {
+        get;
+        set
+        {
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public int RevealDelay { get; set; }
+
+    public bool IsGhostVisible
+    {
+        get;
+        set
+        {
+            field = value;
+            OnPropertyChanged();
+        }
+    }
 }

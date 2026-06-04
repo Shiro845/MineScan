@@ -41,6 +41,10 @@
             <DataTemplate DataType="{x:Type vm1:ExitGameViewModel}">
                 <menuOptions:ExitGameUserControl/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm1:CustomDifficultyViewModel}">
+                <menuOptions:CustomDifficultyUserControl/>
+            </DataTemplate>
             
             <DataTemplate DataType="{x:Type vm:GameBoardViewModel}">
                 <views:GameBoardUserControl/>
